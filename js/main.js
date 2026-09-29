@@ -23,6 +23,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Search: find matching text in cards, news, downloads on this page
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchResults = document.getElementById('search-results');
+
+  function doSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    if (!query) {
+      searchResults.innerHTML = '<p class="search-empty">Masukkan kata kunci untuk mencari.</p>';
+      return;
+    }
+
+    // Gather all searchable elements in the page
+    const items = document.querySelectorAll(
+      '.card-body h3, .card-body p, .news-item h3, .news-item p, .download-item h4, .download-item p, .section-title'
+    );
+
+    const matches = [];
+    items.forEach(el => {
+      const text = el.textContent.trim().toLowerCase();
+      if (text.includes(query)) {
+        // Get the card/item container
+        const card = el.closest('.card') || el.closest('.news-item') || el.closest('.download-item') || el.closest('section');
+        if (card) {
+          matches.push(card);
+        }
+      }
+    });
+
+    if (matches.length === 0) {
+      searchResults.innerHTML = '<p class="search-empty">Tidak ada hasil untuk "' + searchInput.value + '".</p>';
+      return;
+    }
+
+    // Build results list — show clickable links to sections
+    let html = '<p class="search-count">Ditemukan ' + matches.length + ' hasil:</p><div class="search-match-list">';
+    matches.forEach((card, idx) => {
+      // Try to find the heading inside
+      const heading = card.querySelector('h3') || card.querySelector('h4') || card.querySelector('.news-date') || card;
+      const text = heading.textContent.trim();
+      html += '<div class="search-match">' + text + '</div>';
+    });
+    html += '</div>';
+    searchResults.innerHTML = html;
+  }
+
+  if (searchBtn && searchInput) {
+    searchBtn.addEventListener('click', doSearch);
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        doSearch();
+        e.preventDefault();
+      }
+    });
+  }
+
   // Video cards: thumbnail click -> open YouTube in new tab
   const videoThumbs = document.querySelectorAll('.video-thumb');
   videoThumbs.forEach(thumb => {

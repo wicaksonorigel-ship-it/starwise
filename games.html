@@ -27,72 +27,221 @@
 
   <main class="container">
 
+    <!-- Page Header -->
     <div class="page-header">
       <h1>🎮 Games</h1>
-      <p>Ulasan, panduan, dan daftar game — fokus gacha RPG & action.</p>
+      <p>Ulasan, panduan, dan informasi lengkap game — fokus gacha RPG & action.</p>
+      <div class="search-box" style="margin-top:16px;">
+        <input type="text" id="search-input-games" placeholder="Cari game...">
+        <button id="search-btn-games" class="btn btn-primary">Cari</button>
+      </div>
     </div>
 
-    <!-- Ulasan Game -->
+    <!-- All Games Grid -->
     <section class="section">
-      <h2 class="section-title">📝 Ulasan & Panduan</h2>
-      <div class="review-list">
+      <h2 class="section-title">📚 Semua Game</h2>
+      <div class="game-grid">
 
-        <article class="review-item">
-          <div class="review-thumb">
-            <img src="img/game-wuthering-wave.jpg" alt="Wuthering Wave" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span>W</span>'">
+        <!-- Wuthering Waves -->
+        <article class="game-card">
+          <div class="game-card-img">
+            <img src="https://img.youtube.com/vi/xLWZ-bApa2c/maxresdefault.jpg" alt="Wuthering Waves" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'game-placeholder\'>WW</span>'">
           </div>
-          <div class="review-info">
-            <h3>Wuthering Wave — Ulasan Awal: Open World Gacha yang Menyenangkan</h3>
-            <div class="meta">📅 12 Jan 2025 · ⏱ 5 menit baca · 🏷️ Gacha, Action RPG, Open World</div>
-            <p>Wuthering Wave menawarkan pengalaman gacha action RPG dengan open world yang cukup padat. Sistem kombo karakter, rotasi skill, dan elemen exploration terasa solid. Gacha-nya fair — rate drop karakter utama tergolong standar industri. Cocok bagi pemain yang suka action cepat dan eksplorasi campuran puzzle ringan.</p>
-            <div class="review-infobreak">
-              <a href="streaming.html" class="btn btn-small">▶ Lihat Gameplay (YouTube)</a>
+          <div class="game-card-body">
+            <div class="game-card-header">
+              <h3>Wuthering Waves</h3>
+              <span class="game-badge">Gacha RPG</span>
+            </div>
+            <p class="game-desc">Action RPG open world dengan sistem kombo cepat dan gacha karakter. Dunia luas dengan explorasi mendalam dan pertarungan mekanik resonansi.</p>
+            <div class="game-info">
+              <div class="game-info-row">
+                <span class="game-info-label">Developer:</span>
+                <span class="game-info-value">Kuro Games</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Platform:</span>
+                <span class="game-info-value">PC, Mobile, PS5</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Rilis:</span>
+                <span class="game-info-value">January 2024</span>
+              </div>
+            </div>
+            <div class="game-links">
+              <a href="https://www.wutheringwave.com/" target="_blank" rel="noopener" class="btn btn-small btn-outline">Situs Resmi</a>
+              <a href="streaming.html" class="btn btn-small">▶ Streaming</a>
+              <a href="#wuthering-guide" class="btn btn-small btn-outline">Panduan ↓</a>
             </div>
           </div>
         </article>
 
-        <article class="review-item">
-          <div class="review-thumb">
-            <img src="img/game-genshin.jpg" alt="Genshin Impact" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span>G</span>'">
+        <!-- Genshin Impact -->
+        <article class="game-card">
+          <div class="game-card-img">
+            <img src="https://img.youtube.com/vi/8Ty-Btue6OI/maxresdefault.jpg" alt="Genshin Impact" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'game-placeholder\'>GI</span>'">
           </div>
-          <div class="review-info">
-            <h3>Genshin Impact — Panduan Pemula: Elemen, Karakter & Cara Efisien</h3>
-            <div class="meta">📅 5 Jan 2025 · ⏱ 8 menit baca · 🏷️ Gacha, Open World, RPG</div>
-            <p>Genshin Impact tetap jadi rujukan utama genre gacha open world. Panduan ini bahas dasar-dasar sistem elemen, cara memilih karakter pertama yang efisien, cara naik level tanpa boros sacrifice, dan rekomendasi weapon awal. Juga tips eksplorasi wilayah 4–6 untuk pemain baru yang ingin makin nyaman.</p>
-            <div class="review-infobreak">
-              <a href="streaming.html" class="btn btn-small">▶ Lihat Gameplay (YouTube)</a>
+          <div class="game-card-body">
+            <div class="game-card-header">
+              <h3>Genshin Impact</h3>
+              <span class="game-badge">Open World RPG</span>
+            </div>
+            <p class="game-desc">Open world anime RPG dengan sistem elemen, eksplorasi bebas, dan gacha karakter. Petualangan di Teyvat dengan teman perjalanan unik.</p>
+            <div class="game-info">
+              <div class="game-info-row">
+                <span class="game-info-label">Developer:</span>
+                <span class="game-info-value">HoYoverse</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Platform:</span>
+                <span class="game-info-value">PC, Mobile, Console</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Rilis:</span>
+                <span class="game-info-value">September 2020</span>
+              </div>
+            </div>
+            <div class="game-links">
+              <a href="https://genshin.hoyoverse.com/" target="_blank" rel="noopener" class="btn btn-small btn-outline">Situs Resmi</a>
+              <a href="streaming.html" class="btn btn-small">▶ Streaming</a>
+              <a href="#genshin-guide" class="btn btn-small btn-outline">Panduan ↓</a>
             </div>
           </div>
         </article>
 
-        <article class="review-item">
-          <div class="review-thumb">
-            <img src="img/game-honkai.jpg" alt="Honkai: Star Rail" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span>HSR</span>'">
+        <!-- Honkai: Star Rail -->
+        <article class="game-card">
+          <div class="game-card-img">
+            <img src="https://img.youtube.com/vi/twrZobrx0ZM/maxresdefault.jpg" alt="Honkai: Star Rail" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'game-placeholder\'>HSR</span>'">
           </div>
-          <div class="review-info">
-            <h3>Honkai: Star Rail — Review & Strategi Turn-Based Gacha</h3>
-            <div class="meta">📅 28 Des 2024 · ⏱ 6 menit baca · 🏷️ Gacha, Turn-Based, RPG</div>
-            <p>Honkai: Star Rail membawa gacha ke genre turn-based dengan depth yang surprising. Bahas anomal, weakness break, trailblaze power, dan cara build tim yang solid untuk tahap awal. Juga penjelasan singkat tentang ekspektasi gacha — rate, pity, dan cara mengelola resource tanpa frustasi.</p>
-            <div class="review-infobreak">
-              <a href="streaming.html" class="btn btn-small">▶ Lihat Gameplay (YouTube)</a>
+          <div class="game-card-body">
+            <div class="game-card-header">
+              <h3>Honkai: Star Rail</h3>
+              <span class="game-badge">Turn-Based RPG</span>
+            </div>
+            <p class="game-desc">Turn-based RPG space fantasy dengan gacha karakter. Eksplorasi galaksi dengan Astral Express, strategi pertarungan, dan cerita mendalam.</p>
+            <div class="game-info">
+              <div class="game-info-row">
+                <span class="game-info-label">Developer:</span>
+                <span class="game-info-value">HoYoverse</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Platform:</span>
+                <span class="game-info-value">PC, Mobile, PS5</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Rilis:</span>
+                <span class="game-info-value">April 2023</span>
+              </div>
+            </div>
+            <div class="game-links">
+              <a href="https://hsr.hoyoverse.com/" target="_blank" rel="noopener" class="btn btn-small btn-outline">Situs Resmi</a>
+              <a href="streaming.html" class="btn btn-small">▶ Streaming</a>
+              <a href="#hsr-guide" class="btn btn-small btn-outline">Panduan ↓</a>
             </div>
           </div>
         </article>
 
-        <article class="review-item">
-          <div class="review-thumb">
-            <img src="img/game-placeholder.jpg" alt="Game Lain" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span>GS</span>'">
+        <!-- Zenless Zone Zero -->
+        <article class="game-card">
+          <div class="game-card-img">
+            <img src="https://img.youtube.com/vi/w088eYNQW4w/maxresdefault.jpg" alt="Zenless Zone Zero" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'game-placeholder\'>ZZZ</span>'">
           </div>
-          <div class="review-info">
-            <h3>Genshin Impact — Review: 3 Tahun Setelah Rilis</h3>
-            <div class="meta">📅 15 Des 2024 · ⏱ 4 menit baca · 🏷️ Gacha, Open World, RPG</div>
-            <p>Tinjauan ulang Genshin setelah 3 tahun: apa yang masih jalan, apa yang berubah, dan apakah game ini masih layak dimainkan sekarang. Bahas update wilayah, penambahan karakter, dan bagaimana ekonomi gacha berubah dari waktu ke waktu.</p>
-            <div class="review-infobreak">
-              <a href="streaming.html" class="btn btn-small">▶ Lihat Gameplay (YouTube)</a>
+          <div class="game-card-body">
+            <div class="game-card-header">
+              <h3>Zenless Zone Zero</h3>
+              <span class="game-badge">Action RPG</span>
+            </div>
+            <p class="game-desc">Action gacha RPG urban fantasy dengan combat cepat, sistem Bangboos, dan mundo Proxy yang unik. Setting kota futuristik dengan misteri.</p>
+            <div class="game-info">
+              <div class="game-info-row">
+                <span class="game-info-label">Developer:</span>
+                <span class="game-info-value">HoYoverse</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Platform:</span>
+                <span class="game-info-value">PC, Mobile, PS5, Xbox</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Rilis:</span>
+                <span class="game-info-value">July 2024</span>
+              </div>
+            </div>
+            <div class="game-links">
+              <a href="https://zenless.hoyoverse.com/" target="_blank" rel="noopener" class="btn btn-small btn-outline">Situs Resmi</a>
+              <a href="streaming.html" class="btn btn-small">▶ Streaming</a>
+              <a href="#zzz-guide" class="btn btn-small btn-outline">Panduan ↓</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Arknights: Endfield -->
+        <article class="game-card">
+          <div class="game-card-img">
+            <img src="https://img.youtube.com/vi/zpkTx9LkowI/maxresdefault.jpg" alt="Arknights: Endfield" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'game-placeholder\'>AE</span>'">
+          </div>
+          <div class="game-card-body">
+            <div class="game-card-header">
+              <h3>Arknights: Endfield</h3>
+              <span class="game-badge">Action RPG</span>
+            </div>
+            <p class="game-desc">Open world action RPG dengan survival elements, eksplorasi dungeon, dan sistem gacha operator. Cerita misterius di dunia pasca-apokaliptik.</p>
+            <div class="game-info">
+              <div class="game-info-row">
+                <span class="game-info-label">Developer:</span>
+                <span class="game-info-value">HYPERGRYPH</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Platform:</span>
+                <span class="game-info-value">PC, Mobile, PS5</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Rilis:</span>
+                <span class="game-info-value">January 2026</span>
+              </div>
+            </div>
+            <div class="game-links">
+              <a href="https://endfield.gryphline.com/" target="_blank" rel="noopener" class="btn btn-small btn-outline">Situs Resmi</a>
+              <a href="streaming.html" class="btn btn-small">▶ Streaming</a>
+              <a href="#endfield-guide" class="btn btn-small btn-outline">Panduan ↓</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Neverness to Everness -->
+        <article class="game-card">
+          <div class="game-card-img">
+            <img src="https://img.youtube.com/vi/3OKqIAxlFYk/maxresdefault.jpg" alt="Neverness to Everness" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'game-placeholder\'>NTE</span>'">
+          </div>
+          <div class="game-card-body">
+            <div class="game-card-header">
+              <h3>Neverness to Everness</h3>
+              <span class="game-badge">Gacha Action</span>
+            </div>
+            <p class="game-desc">Gacha action RPG dengan tema fantasi abadi, karakter visual unik, dan eksplorasi dunia yang kaya. Combat dinamis dengan sistem combo.</p>
+            <div class="game-info">
+              <div class="game-info-row">
+                <span class="game-info-label">Developer:</span>
+                <span class="game-info-value">Hotta Studio</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Platform:</span>
+                <span class="game-info-value">PC, Mobile, PS5, Mac</span>
+              </div>
+              <div class="game-info-row">
+                <span class="game-info-label">Rilis:</span>
+                <span class="game-info-value">April 2026</span>
+              </div>
+            </div>
+            <div class="game-links">
+              <a href="https://nte.perfectworld.com/" target="_blank" rel="noopener" class="btn btn-small btn-outline">Situs Resmi</a>
+              <a href="streaming.html" class="btn btn-small">▶ Streaming</a>
+              <a href="#nte-guide" class="btn btn-small btn-outline">Panduan ↓</a>
             </div>
           </div>
         </article>
@@ -100,66 +249,94 @@
       </div>
     </section>
 
-    <!-- Daftar Game Gacha -->
+    <!-- Detailed Guides Section -->
     <section class="section">
-      <h2 class="section-title">📋 Daftar Game Gacha & RPG</h2>
-      <div class="db-table-wrapper">
-        <table class="db-table">
-          <thead>
-            <tr>
-              <th>Game</th>
-              <th>Genre</th>
-              <th>Platform</th>
-              <th>Status</th>
-              <th>Links</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Wuthering Wave</strong></td>
-              <td>Action RPG / Gacha</td>
-              <td>PC, Mobile, PS5</td>
-              <td>Rilis</td>
-              <td><a href="https://www.wutheringwave.com/" target="_blank" rel="noopener" class="video-link">Resmi</a></td>
-            </tr>
-            <tr>
-              <td><strong>Genshin Impact</strong></td>
-              <td>Open World / Gacha</td>
-              <td>PC, Mobile, Console</td>
-              <td>Rilis</td>
-              <td><a href="https://genshin.hoyoverse.com/" target="_blank" rel="noopener" class="video-link">Resmi</a></td>
-            </tr>
-            <tr>
-              <td><strong>Honkai: Star Rail</strong></td>
-              <td>Turn-Based / Gacha</td>
-              <td>PC, Mobile, PS5</td>
-              <td>Rilis</td>
-              <td><a href="https://hsr.hoyoverse.com/" target="_blank" rel="noopener" class="video-link">Resmi</a></td>
-            </tr>
-            <tr>
-              <td><strong>Zenless Zone Zero</strong></td>
-              <td>Action / Gacha</td>
-              <td>PC, Mobile, Console</td>
-              <td>Rilis</td>
-              <td><a href="https://www.zhejian.cc/" target="_blank" rel="noopener" class="video-link">Resmi</a></td>
-            </tr>
-            <tr>
-              <td><strong>Girls' Frontline 2</strong></td>
-              <td>Tactical RPG / Gacha</td>
-              <td>PC, Mobile</td>
-              <td>Rilis</td>
-              <td><a href="https://gfl2.nexon.com/" target="_blank" rel="noopener" class="video-link">Resmi</a></td>
-            </tr>
-            <tr>
-              <td><strong>Nier: Automata</strong></td>
-              <td>Action RPG</td>
-              <td>PC, Console</td>
-              <td>Rilis (non-gacha)</td>
-              <td><a href="https://www.nierautomata.com/" target="_blank" rel="noopener" class="video-link">Resmi</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <h2 class="section-title">📖 Panduan & Tips</h2>
+
+      <!-- Wuthering Waves Guide -->
+      <div class="guide-section" id="wuthering-guide">
+        <h3 class="guide-title">📌 Wuthering Waves — Panduan Pemula</h3>
+        <div class="guide-content">
+          <p><strong>Tahap Awal:</strong> Fokus level up karakter utama dan teman perjalanan yang didapat gratis. Eksplorasi wilayah pertama untuk dapatkan resource dasar.</p>
+          <ul>
+            <li><strong>Sistem Resonansi:</strong> Padukan karakter dengan elemen yang sama untuk boost damageใหญ่</li>
+            <li><strong>Rotasi Skill:</strong> Skill utama → Skill nursing → Ultimate saat musuh lemah</li>
+            <li><strong>Gacha:</strong> Simpan intercens untuk banner yang diinginkan. Rate 5-star sekitar 0.6%</li>
+          </ul>
+          <a href="https://www.wutheringwave.com/" target="_blank" rel="noopener" class="btn btn-small">Situs Resmi →</a>
+        </div>
       </div>
+
+      <!-- Genshin Impact Guide -->
+      <div class="guide-section" id="genshin-guide">
+        <h3 class="guide-title">📌 Genshin Impact — Panduan Pemula</h3>
+        <div class="guide-content">
+          <p><strong>Memilih Karakter:</strong> Pemula disarankan mulai dengan karaket elemen Anemo atau Cryo yang gratis. Elemen elemen penting untuk reaksi.</p>
+          <ul>
+            <li><strong>Sistem Elemen:</strong> Ada 7 elemen: Anemo, Geo, Electro, Dendro, Hydro, Pyro, Cryo. Padukan untuk reaksi elemen.</li>
+            <li><strong>Explorasi:</strong> Coba semua wilayah, cari treasure chest, dan selesaikan quest utama.</li>
+            <li><strong>Akun Resin:</strong> Kelola resin dengan bijak. Prioritaskan task yang dapatkan resin cepat.</li>
+          </ul>
+          <a href="https://genshin.hoyoverse.com/" target="_blank" rel="noopener" class="btn btn-small">Situs Resmi →</a>
+        </div>
+      </div>
+
+      <!-- Honkai: Star Rail Guide -->
+      <div class="guide-section" id="hsr-guide">
+        <h3 class="guide-title">📌 Honkai: Star Rail — Strategi Build Tim</h3>
+        <div class="guide-content">
+          <p><strong>Untuk tahap awal:</strong> Bangun tim dengan 1 penyerang utama, 1 defender, dan 1 penunjang. Gunakan trailblazer yang didapat gratis.</p>
+          <ul>
+            <li><strong>Anomal:</strong> Weakness break penting untuk damage bonus besar.</li>
+            <li><strong>Trailblaze Power:</strong> Naikkan level trailblaze untuk unlock area baru.</li>
+            <li><strong>Gacha:</strong> Banner utama biasanya 5-star yang kuat. Simpan resin untuk event.</li>
+          </ul>
+          <a href="https://hsr.hoyoverse.com/" target="_blank" rel="noopener" class="btn btn-small">Situs Resmi →</a>
+        </div>
+      </div>
+
+      <!-- Zenless Zone Zero Guide -->
+      <div class="guide-section" id="zzz-guide">
+        <h3 class="guide-title">📌 Zenless Zone Zero — Panduan Proxy</h3>
+        <div class="guide-content">
+          <p><strong>Memilih Proxy:</strong> Proxy pertama yang direkomendasikan adalah Anby karena 신속하고 강력한 근접 공격을 제공합니다.</p>
+          <ul>
+            <li><strong>Bangboo:</strong> Pilih Bangboo yang mendukung Proxy utama anda.</li>
+            <li><strong>W-Engines:</strong> Naikkan level W-Engines untuk boost damage.</li>
+            <li><strong>Combat:</strong> Gunakan combo attack dan grab attack untuk damage besar.</li>
+          </ul>
+          <a href="https://zenless.hoyoverse.com/" target="_blank" rel="noopener" class="btn btn-small">Situs Resmi →</a>
+        </div>
+      </div>
+
+      <!-- Arknights: Endfield Guide -->
+      <div class="guide-section" id="endfield-guide">
+        <h3 class="guide-title">📌 Arknights: Endfield — Panduan Pemula</h3>
+        <div class="guide-content">
+          <p><strong>Memilih Operator:</strong> Operator pertama yang didapat gratis biasanya cukup untuk early game. Fokus level up dan equip.</p>
+          <ul>
+            <li><strong>Kelas:</strong> Ada beberapa kelas: Sword, Great Sword, Polearm, Handcannon, Arts.</li>
+            <li><strong>Survival:</strong> Kelola resource dengan bijak di dungeon. Bawa food.</li>
+            <li><strong>Gacha:</strong> Operator Gacha tersedia melalui gacha system. Rarity 5-star sulit didapat.</li>
+          </ul>
+          <a href="https://endfield.gryphline.com/" target="_blank" rel="noopener" class="btn btn-small">Situs Resmi →</a>
+        </div>
+      </div>
+
+      <!-- Neverness to Everness Guide -->
+      <div class="guide-section" id="nte-guide">
+        <h3 class="guide-title">📌 Neverness to Everness — Panduan Awal</h3>
+        <div class="guide-content">
+          <p><strong>Memilih Karakter:</strong> Karakter pertama yang direkomendasikan adalah karakter yang gratis atau mudah didapat.</p>
+          <ul>
+            <li><strong>Combat:</strong> Gabungkan attack dasar dengan skill khusus untuk combo damage.</li>
+            <li><strong>Eksplorasi:</strong> Dunia luas dengan dungeon dan secret area.</li>
+            <li><strong>Gacha:</strong> Simpan currency untuk banner karakter 5-star yang diinginkan.</li>
+          </ul>
+          <a href="https://nte.perfectworld.com/" target="_blank" rel="noopener" class="btn btn-small">Situs Resmi →</a>
+        </div>
+      </div>
+
     </section>
 
   </main>
