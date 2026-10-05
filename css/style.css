@@ -1266,3 +1266,260 @@ html, body {
   .source-grid { grid-template-columns: 1fr; }
   .source-links a { flex: 1 1 100%; }
 }
+
+/* ==========================================================
+   PANDUAN — Layout dua kolom + quick access (ala wiki game)
+   ========================================================== */
+.guide-layout {
+  display: grid;
+  grid-template-columns: 268px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  padding-bottom: 40px;
+}
+
+/* --- Sidebar --- */
+.guide-side {
+  position: sticky;
+  top: 76px;
+  display: grid;
+  gap: 14px;
+  max-height: calc(100vh - 92px);
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+}
+
+.side-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 15px 16px;
+}
+
+.side-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 11px;
+}
+
+.side-logo { padding: 13px; }
+
+.side-logo img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 7px;
+  background: #0d1117;
+  margin-bottom: 11px;
+}
+
+.side-logo-meta strong {
+  display: block;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.side-logo-meta span {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.side-toc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.side-toc a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 500;
+  transition: background 0.18s, color 0.18s;
+}
+
+.side-toc a:hover {
+  background: var(--bg-card-hover);
+  color: var(--accent);
+}
+
+.side-ico {
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* --- Quick access boxes --- */
+.quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.qbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 7px;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+
+.qbox:hover {
+  border-color: var(--accent);
+  background: rgba(110, 68, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.qbox-ico { font-size: 1.15rem; line-height: 1; }
+
+.qbox-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  line-height: 1.3;
+}
+
+.qbox:hover .qbox-label { color: var(--fg); }
+
+/* --- Konten utama --- */
+.guide-main { min-width: 0; }
+
+.guide-head { margin-bottom: 20px; }
+
+.guide-head h1 {
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.guide-lead {
+  color: var(--fg-muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.guide-hero {
+  margin-bottom: 22px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0d1117;
+  border: 1px solid var(--border);
+}
+
+.guide-hero img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+
+/* Guide box: ringkasan cepat */
+.guide-box {
+  background: linear-gradient(135deg, rgba(110, 68, 255, 0.09), rgba(255, 110, 199, 0.05));
+  border: 1px solid rgba(110, 68, 255, 0.28);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.guide-box .section-title { margin-bottom: 14px; }
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.sum-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(10, 10, 20, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+
+.sum-ico {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+
+.sum-item strong {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.sum-item span:not(.sum-ico) {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* Section blok konten */
+.guide-block { margin-bottom: 34px; scroll-margin-top: 80px; }
+
+.guide-block .section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 1.3rem;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 15px;
+}
+
+.guide-block p {
+  color: var(--fg);
+  line-height: 1.78;
+  margin-bottom: 13px;
+}
+
+.guide-block .tip-list { margin-top: 14px; }
+
+@media (max-width: 900px) {
+  .guide-layout { grid-template-columns: 1fr; gap: 20px; }
+  .guide-side {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+  .guide-head h1 { font-size: 1.8rem; }
+  .quick-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+}
