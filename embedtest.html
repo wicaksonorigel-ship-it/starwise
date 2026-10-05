@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tes Embed &mdash; Starwise</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Starwise</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="anime.html">Anime</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="page-header">
+      <h1>Tes Embed Video</h1>
+      <p class="page-sub">Halaman bantu untuk memeriksa video mana yang bisa diputar di dalam situs.</p>
+    </div>
+
+    <section class="section">
+      <div class="status-bar">
+        <span class="status-item"><b id="total">&mdash;</b> kandidat</span>
+        <span class="status-item">Sudah diuji: <b id="tested">0</b></span>
+        <span class="status-item" style="color:#4ade80">&#9679; Bisa embed: <b id="ok">0</b></span>
+        <span class="status-item" style="color:#f87171">&#9679; Tidak bisa: <b id="bad">0</b></span>
+        <button id="test-all" class="btn btn-primary" type="button">Tes semua</button>
+        <button id="copy-ok" class="btn btn-small" type="button">Salin yang bisa</button>
+      </div>
+      <div id="result" class="status-note"></div>
+    </section>
+
+    <section class="section">
+      <p class="section-intro">
+        Klik <strong>Test</strong> pada tiap video. Kalau muncul gambar diam, video itu bisa
+        di-embed. Kalau muncul tulisan merah "tidak tersedia", videonya tidak bisa dipakai.
+      </p>
+      <ul class="probe-grid">
+    <li class="probe-item" data-vid="NePpI0bO0uw">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/NePpI0bO0uw/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseIndonesia</strong>
+        <code>NePpI0bO0uw</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=NePpI0bO0uw">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="3soMsAZj3pY">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/3soMsAZj3pY/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseIndonesia</strong>
+        <code>3soMsAZj3pY</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=3soMsAZj3pY">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="0msBQmC0fiU">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/0msBQmC0fiU/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseIndonesia</strong>
+        <code>0msBQmC0fiU</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=0msBQmC0fiU">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="RYg5yd5n0E0">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/RYg5yd5n0E0/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseAsia</strong>
+        <code>RYg5yd5n0E0</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=RYg5yd5n0E0">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="YfrdH--L1MQ">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/YfrdH--L1MQ/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseAsia</strong>
+        <code>YfrdH--L1MQ</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=YfrdH--L1MQ">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="_sNbfQXQbOI">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/_sNbfQXQbOI/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseAsia</strong>
+        <code>_sNbfQXQbOI</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=_sNbfQXQbOI">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="LW5jN9YvoO0">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/LW5jN9YvoO0/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@AniOneAsia</strong>
+        <code>LW5jN9YvoO0</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=LW5jN9YvoO0">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="Wbx_s7ywWzc">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/Wbx_s7ywWzc/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@AniOneAsia</strong>
+        <code>Wbx_s7ywWzc</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=Wbx_s7ywWzc">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="FjIWcMTjn9E">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/FjIWcMTjn9E/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@AniOneAsia</strong>
+        <code>FjIWcMTjn9E</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=FjIWcMTjn9E">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="eUV3qtaT6KU">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/eUV3qtaT6KU/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Crunchyroll</strong>
+        <code>eUV3qtaT6KU</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=eUV3qtaT6KU">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="DRZiHecuYo0">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/DRZiHecuYo0/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Crunchyroll</strong>
+        <code>DRZiHecuYo0</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=DRZiHecuYo0">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="qWETXGs4ZaY">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/qWETXGs4ZaY/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Crunchyroll</strong>
+        <code>qWETXGs4ZaY</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=qWETXGs4ZaY">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="1A3hXqWKoSg">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/1A3hXqWKoSg/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@NetflixAnime</strong>
+        <code>1A3hXqWKoSg</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=1A3hXqWKoSg">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="ywgOcwp4NVo">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/ywgOcwp4NVo/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@NetflixAnime</strong>
+        <code>ywgOcwp4NVo</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=ywgOcwp4NVo">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="51iP14FiFLo">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/51iP14FiFLo/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@NetflixAnime</strong>
+        <code>51iP14FiFLo</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=51iP14FiFLo">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="jS_tVxxLMEY">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/jS_tVxxLMEY/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@bilibili</strong>
+        <code>jS_tVxxLMEY</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=jS_tVxxLMEY">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="Yfu4WQjmx1Q">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/Yfu4WQjmx1Q/hqdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@AnimeIndo</strong>
+        <code>Yfu4WQjmx1Q</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=Yfu4WQjmx1Q">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="1MmM2SKL_tA">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/1MmM2SKL_tA/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Animelon</strong>
+        <code>1MmM2SKL_tA</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=1MmM2SKL_tA">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="X8rYFujq8Sc">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/X8rYFujq8Sc/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Animelon</strong>
+        <code>X8rYFujq8Sc</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=X8rYFujq8Sc">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="1wD32Vt2qL4">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/1wD32Vt2qL4/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Animelon</strong>
+        <code>1wD32Vt2qL4</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=1wD32Vt2qL4">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="TonPBfdjIdc">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/TonPBfdjIdc/hqdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@AnimeSubIndonesia</strong>
+        <code>TonPBfdjIdc</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=TonPBfdjIdc">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="eLLO-wxdri0">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/eLLO-wxdri0/hqdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@DuniaAnime</strong>
+        <code>eLLO-wxdri0</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=eLLO-wxdri0">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="2VSFMQTGdk4">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/2VSFMQTGdk4/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseTaiwan</strong>
+        <code>2VSFMQTGdk4</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=2VSFMQTGdk4">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="9hLmdSi93fY">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/9hLmdSi93fY/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseTaiwan</strong>
+        <code>9hLmdSi93fY</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=9hLmdSi93fY">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="TMgM5jsEgFg">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/TMgM5jsEgFg/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseTaiwan</strong>
+        <code>TMgM5jsEgFg</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=TMgM5jsEgFg">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="vBeKkIism7E">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/vBeKkIism7E/hqdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseTH</strong>
+        <code>vBeKkIism7E</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=vBeKkIism7E">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="r0iTgV-YiFc">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/r0iTgV-YiFc/hqdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseTH</strong>
+        <code>r0iTgV-YiFc</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=r0iTgV-YiFc">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="3f3VYrSTe50">
+      <div class="probe-thumb">
+        <span class="pt-ico">&#9654;</span>
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseTH</strong>
+        <code>3f3VYrSTe50</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=3f3VYrSTe50">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="NePpI0bO0uw">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/NePpI0bO0uw/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseINDONESIA</strong>
+        <code>NePpI0bO0uw</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=NePpI0bO0uw">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="3soMsAZj3pY">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/3soMsAZj3pY/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseINDONESIA</strong>
+        <code>3soMsAZj3pY</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=3soMsAZj3pY">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="0msBQmC0fiU">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/0msBQmC0fiU/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@MuseINDONESIA</strong>
+        <code>0msBQmC0fiU</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=0msBQmC0fiU">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="F2rNj8JT6pA">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/F2rNj8JT6pA/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Nekonyan</strong>
+        <code>F2rNj8JT6pA</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=F2rNj8JT6pA">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="4ys9Rkcl1vA">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/4ys9Rkcl1vA/hqdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Nekonyan</strong>
+        <code>4ys9Rkcl1vA</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=4ys9Rkcl1vA">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="mb10Atd8JIM">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/mb10Atd8JIM/hqdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Nekonyan</strong>
+        <code>mb10Atd8JIM</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=mb10Atd8JIM">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="roJMSO4PDlQ">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/roJMSO4PDlQ/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@BandaiChannel</strong>
+        <code>roJMSO4PDlQ</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=roJMSO4PDlQ">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="cIeYZtJmqOM">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/cIeYZtJmqOM/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@BandaiChannel</strong>
+        <code>cIeYZtJmqOM</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=cIeYZtJmqOM">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="Lp75StJJU-8">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/Lp75StJJU-8/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@BandaiChannel</strong>
+        <code>Lp75StJJU-8</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=Lp75StJJU-8">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="6GDMDhzPctA">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/6GDMDhzPctA/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Aniplex</strong>
+        <code>6GDMDhzPctA</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=6GDMDhzPctA">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="VzCsxgQ_4_M">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/VzCsxgQ_4_M/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Aniplex</strong>
+        <code>VzCsxgQ_4_M</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=VzCsxgQ_4_M">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="JnYmf1YKy3g">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/JnYmf1YKy3g/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@Aniplex</strong>
+        <code>JnYmf1YKy3g</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=JnYmf1YKy3g">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="oY2xoUbtS-4">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/oY2xoUbtS-4/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@YostarPictures</strong>
+        <code>oY2xoUbtS-4</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=oY2xoUbtS-4">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="9vBwxgTXr48">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/9vBwxgTXr48/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@YostarPictures</strong>
+        <code>9vBwxgTXr48</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=9vBwxgTXr48">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="Vkueq2cmSZw">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/Vkueq2cmSZw/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@YostarPictures</strong>
+        <code>Vkueq2cmSZw</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=Vkueq2cmSZw">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="wfIChTDMeB0">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/wfIChTDMeB0/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@OLM</strong>
+        <code>wfIChTDMeB0</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=wfIChTDMeB0">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="2ZKiBHyuxbQ">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/2ZKiBHyuxbQ/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@OLM</strong>
+        <code>2ZKiBHyuxbQ</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=2ZKiBHyuxbQ">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="SeMpikQzORQ">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/SeMpikQzORQ/maxresdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@OLM</strong>
+        <code>SeMpikQzORQ</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=SeMpikQzORQ">Buka di YouTube</a>
+    </li>
+    <li class="probe-item" data-vid="zD-oZFIprwo">
+      <div class="probe-thumb">
+        <img src="https://img.youtube.com/vi/zD-oZFIprwo/hqdefault.jpg" alt="" loading="lazy">
+        <button class="probe-btn" type="button">Test</button>
+      </div>
+      <div class="probe-meta">
+        <strong>@StudioBind</strong>
+        <code>zD-oZFIprwo</code>
+        <span class="probe-status">belum diuji</span>
+      </div>
+      <div class="probe-player"></div>
+      <a class="probe-link" target="_blank" rel="noopener"
+         href="https://www.youtube.com/watch?v=zD-oZFIprwo">Buka di YouTube</a>
+    </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="js/probe.js"></script>
+</body>
+</html>

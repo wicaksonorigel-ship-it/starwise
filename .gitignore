@@ -12,3 +12,5 @@ __pycache__/
 
 # Playlist Muse Asia untuk generator anime
 _muse_playlists.json
+_probe_channels.json
+_probe_items.json
