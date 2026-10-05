@@ -2162,3 +2162,35 @@ html, body {
   color: var(--fg-muted);
   line-height: 1.45;
 }
+
+/* Navigasi cepat di dalam halaman (anchor pills) */
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 4px;
+}
+
+.page-nav a {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 15px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.page-nav a:hover {
+  color: var(--fg);
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+}
+
+.page-nav-hl {
+  color: var(--accent-2) !important;
+  border-color: rgba(255, 110, 199, 0.35) !important;
+  background: rgba(255, 110, 199, 0.07) !important;
+}

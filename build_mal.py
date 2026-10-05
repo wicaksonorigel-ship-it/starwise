@@ -133,17 +133,25 @@ def main():
     f = BASE / "anime.html"
     txt = f.read_text(encoding="utf-8")
 
-    marker = '    <p class="review-infobreak">'
+    # Sisipkan di SEBELUM section playlist supaya MAL tidak terdorong
+    # ke bawah halaman setiap kali auto-update jalan.
+    marker = '    <section class="section" id="playlist">'
     i = txt.find(marker)
     if i < 0:
-        print('Penanda review-infobreak tidak ditemukan; dilewati.')
+        # fallback: sisipkan sebelum catatan penutup
+        marker = '    <p class="review-infobreak">'
+        i = txt.find(marker)
+    if i < 0:
+        print('Penanda sisip tidak ditemukan; dilewati.')
         return
 
     if 'id="mal-lists-' in txt:
         # Hapus section MAL dari run sebelumnya supaya bisa di-ganti.
+        # Regex tahan spasi/indentasi: section yang disisipkan sebelumnya
+        # bisa menempel tanpa indentasi, jadi jangan andalkan spasi.
         cleaned, n_removed = re.subn(
-            r'\n\n    <section class="section" id="mal-lists-[^"]+">.*?'
-            r'\n    </section>(?=\n)', "", txt, flags=re.S)
+            r'\n\n[ \t]*<section class="section" id="mal-lists-[^"]+">'
+            r'.*?</section>(?=\n)', "", txt, flags=re.S)
         if n_removed:
             txt = cleaned
             print("Section MAL lama dihapus: %d" % n_removed)
