@@ -133,24 +133,39 @@ def main():
     f = BASE / "anime.html"
     txt = f.read_text(encoding="utf-8")
 
-    # sisipkan tab navigasi di section Jelajahi / platform (kalau ada)
-    if "mal-lists" not in txt:
-        anchor = '      <div class="card-grid">\n        <a href="https://www.crunchyroll.com/"'
-        if anchor in txt:
-            txt = txt.replace(anchor, nav_tab + anchor, 1)
+    marker = '    <p class="review-infobreak">'
+    i = txt.find(marker)
+    if i < 0:
+        print('Penanda review-infobreak tidak ditemukan; dilewati.')
+        return
 
-    # sisipkan blok daftar sebelum penutup <main>
-    if "id=\"mal-lists-" not in txt:
-        marker = '    <p class="review-infobreak">'
-        i = txt.find(marker)
-        if i > 0:
-            txt = txt[:i] + blocks + "\n\n" + txt[i:]
+    if 'id="mal-lists-' in txt:
+        # Hapus section MAL dari run sebelumnya supaya bisa di-ganti.
+        cleaned, n_removed = re.subn(
+            r'\n\n    <section class="section" id="mal-lists-[^"]+">.*?'
+            r'\n    </section>(?=\n)', "", txt, flags=re.S)
+        if n_removed:
+            txt = cleaned
+            print("Section MAL lama dihapus: %d" % n_removed)
+        else:
+            print("PERINGATAN: section MAL tidak terhapus; data mungkin ganda.")
+    else:
+        # Sisipkan tab navigasi sekali saja.
+        anchor_nav = ('      <div class="card-grid">\n'
+                      '        <a href="https://www.crunchyroll.com/"')
+        if anchor_nav in txt:
+            txt = txt.replace(anchor_nav, nav_tab + anchor_nav, 1)
+
+    i = txt.find(marker)
+    txt = txt[:i] + blocks + "\n\n" + txt[i:]
 
     f.write_text(txt, encoding="utf-8")
     (BASE / "_mal_raw.json").write_text(
         json.dumps(blocks, ensure_ascii=False, indent=1), encoding="utf-8")
-    print("anime.html diperbarui (%d section MAL, %d byte)"
-          % (blocks.count('class="section"'), f.stat().st_size))
+    n_sections = len(re.findall(r'id="mal-lists-', txt))
+    n_cards = txt.count('class="mal-card"')
+    print("anime.html diperbarui: %d section, %d card, %d byte"
+          % (n_sections, n_cards, f.stat().st_size))
 
 
 if __name__ == "__main__":

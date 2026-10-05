@@ -1,0 +1,44 @@
+name: Segarkan Daftar MAL
+
+# Menarik 3 daftar dari MyAnimeList (Top Airing, Top Upcoming, Top Populer)
+# lalu mengganti section MAL di anime.html dengan data terbaru.
+
+on:
+  schedule:
+    # 2 kali sehari: 03:40 dan 15:40 UTC
+    - cron: "40 3,15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: segarkan-mal
+  cancel-in-progress: false
+
+jobs:
+  segarkan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tarik daftar MyAnimeList
+        run: python build_mal.py
+
+      - name: Commit bila ada perubahan
+        run: |
+          if git diff --quiet -- anime.html; then
+            echo "Daftar MAL tidak berubah."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add anime.html
+          git commit -m "chore(anime): segarkan daftar MyAnimeList ($(date -u '+%Y-%m-%d %H:%M UTC') [skip ci])"
+          git push
