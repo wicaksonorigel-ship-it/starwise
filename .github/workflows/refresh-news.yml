@@ -1,0 +1,44 @@
+name: Segarkan Berita
+
+# Menjalankan build_news.py secara berkala supaya halaman berita selalu
+# menampilkan artikel terkini dari tiap game.
+
+on:
+  schedule:
+    # 3 kali sehari: 00:10, 08:10, 16:10 UTC
+    - cron: "10 0,8,16 * * *"
+  workflow_dispatch: # bisa dijalankan manual dari tab Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: segarkan-berita
+  cancel-in-progress: false
+
+jobs:
+  segarkan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tarik berita terbaru
+        run: python build_news.py
+
+      - name: Commit bila ada perubahan
+        run: |
+          if git diff --quiet -- news.html; then
+            echo "Tidak ada perubahan, tidak perlu commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.html
+          git commit -m "chore(berita): segarkan berita otomatis ($(date -u '+%Y-%m-%d %H:%M UTC') [skip ci])"
+          git push

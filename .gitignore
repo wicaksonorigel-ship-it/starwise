@@ -1,4 +1,11 @@
 # Data sumber untuk generator halaman panduan (build_guide.py).
 # Bisa diedit lalu di-regenerate dengan: python build_guide.py _data_genshin.json ...
 _data_*.json
+
+# Cache berita mentah dari build_news.py
+_news_raw.json
 _anime_img.json
+
+# Python
+__pycache__/
+*.pyc

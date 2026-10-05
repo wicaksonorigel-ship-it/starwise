@@ -1523,3 +1523,188 @@ html, body {
   .guide-head h1 { font-size: 1.8rem; }
   .quick-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
 }
+
+/* ==========================================================
+   BERITA — status bar, filter, baris berita, channel
+   ========================================================== */
+.news-status { padding: 24px 0 4px; }
+
+.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+
+.status-item {
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+}
+
+.status-item b { color: var(--fg); }
+
+#news-refresh { margin-left: auto; }
+
+.status-note {
+  flex: 1 1 100%;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.status-note:empty { display: none; }
+
+.news-count {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 11px;
+}
+
+.section-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  object-fit: cover;
+  background: #0d1117;
+  flex-shrink: 0;
+}
+
+.section-title-text { display: inline; }
+
+/* Baris berita */
+.news-row {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 15px 18px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+
+.news-row:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  transform: translateX(3px);
+}
+
+.news-row-body { display: block; }
+
+.news-row-body strong {
+  display: block;
+  font-size: 0.96rem;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.news-row-desc {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+  margin-bottom: 7px;
+}
+
+.news-row-meta {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.news-list[hidden],
+.section[hidden] { display: none; }
+
+/* Channel YouTube */
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.channel-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.channel-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.channel-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  padding: 20px 16px;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+}
+
+.channel-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #0d1117;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+
+.channel-card:hover .channel-avatar { border-color: var(--accent); }
+
+.channel-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.channel-meta strong {
+  display: block;
+  font-size: 0.94rem;
+  line-height: 1.3;
+}
+
+.channel-dev {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.channel-desc {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.channel-link {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  #news-refresh { margin-left: 0; width: 100%; }
+  .status-bar { gap: 8px 14px; }
+}
