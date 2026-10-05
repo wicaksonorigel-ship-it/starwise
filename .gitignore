@@ -14,3 +14,6 @@ __pycache__/
 _muse_playlists.json
 _probe_channels.json
 _probe_items.json
+_streaming_report.json
+_channel_ids.json
+_backup_streaming/

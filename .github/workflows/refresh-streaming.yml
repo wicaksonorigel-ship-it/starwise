@@ -1,0 +1,47 @@
+name: Segarkan Streaming
+
+# Menarik video terbaru dari kanal resmi YouTube tiap game dan menambahkan
+# ke halaman streaming-<game>.html. Video yang sudah ada tidak dihapus.
+
+on:
+  schedule:
+    # 4 kali sehari: 01:20, 07:20, 13:20, 19:20 UTC
+    - cron: "20 1,7,13,19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: segarkan-streaming
+  cancel-in-progress: false
+
+jobs:
+  segarkan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tarik video terbaru
+        run: python build_streaming.py
+
+      - name: Perbarui jumlah video di halaman overview
+        run: python build_streaming_overview.py
+
+      - name: Commit bila ada perubahan
+        run: |
+          if git diff --quiet -- 'streaming-*.html'; then
+            echo "Tidak ada video baru."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 'streaming-*.html'
+          git commit -m "chore(streaming): video baru dari kanal resmi ($(date -u '+%Y-%m-%d %H:%M UTC') [skip ci])"
+          git push
