@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Starwise — Game, Anime & Film</title>
+  <meta name="description" content="Starwise: ulasan, panduan, database, dan berita update game gacha, anime, dan film Marvel.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,293 +22,316 @@
         <a href="streaming.html">Streaming</a>
         <a href="download.html">Download</a>
       </nav>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     </div>
   </header>
 
-  <main class="container">
+  <main>
 
-    <!-- Hero -->
+    <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="hero-bg"></div>
-      <div class="hero-content">
+      <div class="container hero-inner">
+        <span class="hero-eyebrow">Game &middot; Anime &middot; Film</span>
         <h1>Starwise</h1>
-        <p class="hero-sub">Game • Anime • Film — Ulasan, Database & Berita Update</p>
+        <p class="hero-sub">Ulasan, panduan, database, dan berita update untuk game gacha, anime musim ini, dan MCU.</p>
         <div class="hero-cta">
           <a href="games.html" class="btn btn-primary">Eksplor Games</a>
           <a href="anime.html" class="btn btn-secondary">Eksplor Anime</a>
-          <a href="movies.html" class="btn btn-secondary">Marvel Universe</a>
+          <a href="streaming.html" class="btn btn-secondary">Tonton Video</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>6</b><span>Game</span></div>
+          <div class="stat"><b>7</b><span>Panduan</span></div>
+          <div class="stat"><b>14</b><span>Video</span></div>
+          <div class="stat"><b>6</b><span>Anime</span></div>
         </div>
       </div>
     </section>
 
-    <!-- Search -->
-    <section class="section">
-      <h2 class="section-title">🔍 Cari</h2>
-      <div class="search-box">
-        <input type="text" id="search-input" placeholder="Cari game, anime, film, berita...">
-        <button id="search-btn" class="btn btn-primary">Cari</button>
+    <!-- ============ SEARCH ============ -->
+    <section class="section search-strip">
+      <div class="container">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">&#128269;</span>
+          <input type="search" id="search-input" placeholder="Cari game, anime, film, berita&hellip;" autocomplete="off">
+          <button id="search-btn" class="btn btn-primary">Cari</button>
+        </div>
+        <div id="search-results" class="search-results"></div>
       </div>
-      <div id="search-results" class="search-results"></div>
     </section>
 
-    <!-- Featured Games — 6 card -->
+    <!-- ============ GAME ============ -->
     <section class="section">
-      <h2 class="section-title">🎮 Game Populer</h2>
-      <div class="card-grid">
-        <article class="card">
-          <div class="card-img">
-            <img src="img/logo-ww.jpg" alt="Wuthering Wave" loading="lazy"
-                 onerror="this.src='https://img.youtube.com/vi/xLWZ-bApa2c/hqdefault.jpg'; this.onerror='this.style.display=\"none\"; this.parentElement.innerHTML=\"<span class=\\\'placeholder\\\'>Wuthering Wave</span>\"'">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">Game Populer</h2>
+          <a href="games.html" class="section-more">Semua game &rarr;</a>
+        </header>
+        <div class="tile-grid">
+        <a href="games.html" class="tile">
+          <div class="tile-img"><img src="img/logo-ww.jpg" alt="Wuthering Waves" loading="lazy" decoding="async"></div>
+          <div class="tile-body">
+            <h3>Wuthering Waves</h3>
+            <p>Gacha action RPG — open world, kombo cepat, sistem Echo unik.</p>
+            <span class="tile-tag">Streaming: 3 video</span>
           </div>
-          <div class="card-body">
-            <h3>Wuthering Wave</h3>
-            <p>Gacha action RPG — open world, mekanik kombo, karakter gacha.</p>
-            <a href="games.html" class="btn btn-small">Baca Ulasan →</a>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-img">
-            <img src="img/logo-gi.jpg" alt="Genshin Impact" loading="lazy"
-                 onerror="this.src='https://img.youtube.com/vi/8Ty-Btue6OI/hqdefault.jpg'; this.onerror='this.style.display=\"none\"; this.parentElement.innerHTML=\"<span class=\\\'placeholder\\\'>Genshin Impact</span>\"'">
-          </div>
-          <div class="card-body">
+        </a>
+        <a href="games.html" class="tile">
+          <div class="tile-img"><img src="img/logo-gi.jpg" alt="Genshin Impact" loading="lazy" decoding="async"></div>
+          <div class="tile-body">
             <h3>Genshin Impact</h3>
             <p>Open world anime RPG — eksplorasi, pertarungan elemen, karakter gacha.</p>
-            <a href="games.html" class="btn btn-small">Baca Ulasan →</a>
+            <span class="tile-tag">Panduan lengkap</span>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img">
-            <img src="img/logo-hsr.jpg" alt="Honkai Star Rail" loading="lazy"
-                 onerror="this.src='https://img.youtube.com/vi/twrZobrx0ZM/hqdefault.jpg'; this.onerror='this.style.display=\"none\"; this.parentElement.innerHTML=\"<span class=\\\'placeholder\\\'>Honkai: Star Rail</span>\"'">
-          </div>
-          <div class="card-body">
+        </a>
+        <a href="games.html" class="tile">
+          <div class="tile-img"><img src="img/logo-hsr.jpg" alt="Honkai: Star Rail" loading="lazy" decoding="async"></div>
+          <div class="tile-body">
             <h3>Honkai: Star Rail</h3>
-            <p>Turn-based gacha RPG — space fantasy, strategi, karakter gacha.</p>
-            <a href="games.html" class="btn btn-small">Baca Ulasan →</a>
+            <p>Turn-based gacha RPG — space fantasy, strategi tim, pity 90 pull.</p>
+            <span class="tile-tag">Panduan lengkap</span>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img">
-            <img src="img/logo-zzz.jpg" alt="Zenless Zone Zero" loading="lazy"
-                 onerror="this.src='https://img.youtube.com/vi/w088eYNQW4w/hqdefault.jpg'; this.onerror='this.style.display=\"none\"; this.parentElement.innerHTML=\"<span class=\\\'placeholder\\\'>Zenless Zone Zero</span>\"'">
-          </div>
-          <div class="card-body">
+        </a>
+        <a href="games.html" class="tile">
+          <div class="tile-img"><img src="img/logo-zzz.jpg" alt="Zenless Zone Zero" loading="lazy" decoding="async"></div>
+          <div class="tile-body">
             <h3>Zenless Zone Zero</h3>
-            <p>Action gacha RPG — urban fantasy, combat cepat, karakter gacha.</p>
-            <a href="games.html" class="btn btn-small">Baca Ulasan →</a>
+            <p>Action gacha RPG — urban fantasy, combat cepat, rotasi dek.</p>
+            <span class="tile-tag">Panduan lengkap</span>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img">
-            <img src="img/logo-endfield.jpg" alt="Arknights: Endfield" loading="lazy"
-                 onerror="this.src='https://img.youtube.com/vi/zpkTx9LkowI/hqdefault.jpg'; this.onerror='this.style.display=\"none\"; this.parentElement.innerHTML=\"<span class=\\\'placeholder\\\'>Arknights: Endfield</span>\"'">
-          </div>
-          <div class="card-body">
+        </a>
+        <a href="games.html" class="tile">
+          <div class="tile-img"><img src="img/logo-endfield.jpg" alt="Arknights: Endfield" loading="lazy" decoding="async"></div>
+          <div class="tile-body">
             <h3>Arknights: Endfield</h3>
-            <p>Open world action RPG — survival, eksplorasi, strategi taktis.</p>
-            <a href="games.html" class="btn btn-small">Baca Ulasan →</a>
+            <p>3D action RPG — Talos-II, sistem AIC, operator unik.</p>
+            <span class="tile-tag">Panduan lengkap</span>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img">
-            <img src="img/logo-nte.jpg" alt="Neverness to Everness" loading="lazy"
-                 onerror="this.src='https://img.youtube.com/vi/3OKqIAxlFYk/hqdefault.jpg'; this.onerror='this.style.display=\"none\"; this.parentElement.innerHTML=\"<span class=\\\'placeholder\\\'>NTE</span>\"'">
-          </div>
-          <div class="card-body">
+        </a>
+        <a href="games.html" class="tile">
+          <div class="tile-img"><img src="img/logo-nte.jpg" alt="Neverness to Everness" loading="lazy" decoding="async"></div>
+          <div class="tile-body">
             <h3>Neverness to Everness</h3>
-            <p>Gacha action RPG — fantasi abadi, karakter unik, eksplorasi dunia.</p>
-            <a href="games.html" class="btn btn-small">Baca Ulasan →</a>
+            <p>Urban supernatural — Talonland, combat real-time dengan strategi.</p>
+            <span class="tile-tag">Panduan lengkap</span>
           </div>
-        </article>
+        </a>
+        </div>
       </div>
     </section>
 
-    <!-- Featured Anime — 2 card: completed & ongoing -->
-    <section class="section">
-      <h2 class="section-title">📺 Anime</h2>
-      <div class="card-grid">
-        <article class="card">
-          <div class="card-img" style="background:#16213e;">
-            <img src="" alt="Anime" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'placeholder\'>Anime Completed</span>'">
+    <!-- ============ ANIME ============ -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">Anime Sedang Tayang</h2>
+          <a href="anime.html" class="section-more">Semua anime &rarr;</a>
+        </header>
+        <div class="tile-grid">
+        <a href="anime.html" class="tile">
+          <div class="tile-img"><img src="img/anime-apothecary.jpg" alt="The Apothecary Diaries S3" loading="lazy" decoding="async">
+            <span class="tile-badge">Tayang 2 Oktober 2026</span>
           </div>
-          <div class="card-body">
-            <h3>Anime Completed</h3>
-            <p>Kumpulan anime sudah selesai — rekomendasi serie yang wajib ditonton sampai habis.</p>
-            <a href="anime.html" class="btn btn-small">Lihat Anime →</a>
+          <div class="tile-body">
+            <h3>The Apothecary Diaries S3</h3>
+            <p class="tile-genre">Drama, Fantasy, Slice of Life</p>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img" style="background:#2a1621;">
-            <img src="" alt="Anime" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'placeholder\'>Anime Ongoing</span>'">
+        </a>
+        <a href="anime.html" class="tile">
+          <div class="tile-img"><img src="img/anime-frieren2.jpg" alt="Frieren Season 2" loading="lazy" decoding="async">
+            <span class="tile-badge">Tayang Oktober 2026</span>
           </div>
-          <div class="card-body">
-            <h3>Anime Ongoing</h3>
-            <p>Anime sedang rilis musim ini — update mingguan, sinopsis, dan jadwal tayang.</p>
-            <a href="anime.html" class="btn btn-small">Lihat Anime →</a>
+          <div class="tile-body">
+            <h3>Frieren Season 2</h3>
+            <p class="tile-genre">Adventure, Drama, Fantasy</p>
           </div>
-        </article>
+        </a>
+        <a href="anime.html" class="tile">
+          <div class="tile-img"><img src="img/anime-tougenanki.jpg" alt="TOUGEN ANKI" loading="lazy" decoding="async">
+            <span class="tile-badge">Tayang 2 Oktober 2026</span>
+          </div>
+          <div class="tile-body">
+            <h3>TOUGEN ANKI</h3>
+            <p class="tile-genre">Action, Supernatural, Dark Fantasy</p>
+          </div>
+        </a>
+        <a href="anime.html" class="tile">
+          <div class="tile-img"><img src="img/anime-overgeared.jpg" alt="Overgeared" loading="lazy" decoding="async">
+            <span class="tile-badge">Tayang 27 September 2026</span>
+          </div>
+          <div class="tile-body">
+            <h3>Overgeared</h3>
+            <p class="tile-genre">Action, Fantasy, Overpowered</p>
+          </div>
+        </a>
+        <a href="anime.html" class="tile">
+          <div class="tile-img"><img src="img/anime-blackclover.jpg" alt="Black Clover Season 2" loading="lazy" decoding="async">
+            <span class="tile-badge">Tayang 3 Oktober 2026</span>
+          </div>
+          <div class="tile-body">
+            <h3>Black Clover Season 2</h3>
+            <p class="tile-genre">Action, Fantasy, Adventure</p>
+          </div>
+        </a>
+        <a href="anime.html" class="tile">
+          <div class="tile-img"><img src="img/anime-rayearth.jpg" alt="Magic Knight Rayearth" loading="lazy" decoding="async">
+            <span class="tile-badge">Tayang Oktober 2026</span>
+          </div>
+          <div class="tile-body">
+            <h3>Magic Knight Rayearth</h3>
+            <p class="tile-genre">Action, Fantasy, Mecha</p>
+          </div>
+        </a>
+        </div>
       </div>
     </section>
 
-    <!-- Featured Movies — Full Marvel Universe -->
+    <!-- ============ FILM ============ -->
     <section class="section">
-      <h2 class="section-title">🎬 Marvel Universe</h2>
-      <div class="card-grid">
-        <article class="card">
-          <div class="card-img" style="background:#3d0c0c;">
-            <img src="https://www.impawards.com/2012/avengers.jpg" alt="The Avengers" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'placeholder\'>The Avengers</span>'">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">Marvel Universe</h2>
+          <a href="movies.html" class="section-more">Semua film &rarr;</a>
+        </header>
+        <div class="tile-grid">
+        <a href="movies.html" class="tile">
+          <div class="tile-img tile-img-poster"><img src="img/movie-endgame.jpg" alt="Avengers: Endgame" loading="lazy" decoding="async">
+            <span class="tile-year">2019</span>
           </div>
-          <div class="card-body">
-            <h3>The Avengers (2012)</h3>
-            <p>Tim superhero pertama MCU: Iron Man, Captain America, Thor, Hulk, Black Widow, Hawkeye.</p>
-            <a href="movies.html" class="btn btn-small">Lihat Film →</a>
+          <div class="tile-body">
+            <h3>Avengers: Endgame</h3>
+            <p>Penyelesaian saga Infinity — semua superhero MCUplash menghadapi Thanos.</p>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img" style="background:#1a1a2e;">
-            <img src="https://www.impawards.com/2008/iron_man.jpg" alt="Iron Man" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'placeholder\'>Iron Man</span>'">
+        </a>
+        <a href="movies.html" class="tile">
+          <div class="tile-img tile-img-poster"><img src="img/movie-nwh.jpg" alt="Spider-Man: No Way Home" loading="lazy" decoding="async">
+            <span class="tile-year">2021</span>
           </div>
-          <div class="card-body">
-            <h3>Iron Man (2008)</h3>
-            <p>Tony Stark — miliarder, jenius, penemu — membangun baju besi dan menjadi Iron Man.</p>
-            <a href="movies.html" class="btn btn-small">Lihat Film →</a>
+          <div class="tile-body">
+            <h3>Spider-Man: No Way Home</h3>
+            <p>Peter Parker mengungkap identitasnya — multiverse terbuka.</p>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img" style="background:#1a2e0c;">
-            <img src="https://www.impawards.com/2011/captain_america_the_first_avenger.jpg" alt="Captain America" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'placeholder\'>Captain America</span>'">
+        </a>
+        <a href="movies.html" class="tile">
+          <div class="tile-img tile-img-poster"><img src="img/movie-ironman.jpg" alt="Iron Man" loading="lazy" decoding="async">
+            <span class="tile-year">2008</span>
           </div>
-          <div class="card-body">
-            <h3>Captain America: The First Avenger</h3>
-            <p>Steve Rogers — pria kerdil yang menjadi superhero atas the serum — melawan Red Skull & HYDRA.</p>
-            <a href="movies.html" class="btn btn-small">Lihat Film →</a>
+          <div class="tile-body">
+            <h3>Iron Man</h3>
+            <p>Tony Stark membangun baju besi dan menjadi Iron Man.</p>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img" style="background:#2e1a0c;">
-            <img src="https://www.impawards.com/2014/guardians_of_the_galaxy.jpg" alt="Guardians of the Galaxy" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'placeholder\'>Guardians of the Galaxy</span>'">
+        </a>
+        <a href="movies.html" class="tile">
+          <div class="tile-img tile-img-poster"><img src="img/movie-caps.jpg" alt="Captain America: Winter Soldier" loading="lazy" decoding="async">
+            <span class="tile-year">2014</span>
           </div>
-          <div class="card-body">
+          <div class="tile-body">
+            <h3>Captain America: Winter Soldier</h3>
+            <p>Steve Rogersuhn hunted di jantung HYDRA yang tersembunyi.</p>
+          </div>
+        </a>
+        <a href="movies.html" class="tile">
+          <div class="tile-img tile-img-poster"><img src="img/movie-gotg.jpg" alt="Guardians of the Galaxy" loading="lazy" decoding="async">
+            <span class="tile-year">2014</span>
+          </div>
+          <div class="tile-body">
             <h3>Guardians of the Galaxy</h3>
-            <p>Tim yang dipopulerkan oleh humor & musik klasik. Peter Quill, Gamora, Drax, Rocket, Groot.</p>
-            <a href="movies.html" class="btn btn-small">Lihat Film →</a>
+            <p>Tim yang dipopulerkan humor dan musik klasik.</p>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img" style="background:#3d0c0c;">
-            <img src="https://www.impawards.com/2019/avengers_endgame.jpg" alt="Avengers Endgame" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'placeholder\'>Avengers: Endgame</span>'">
+        </a>
+        <a href="movies.html" class="tile">
+          <div class="tile-img tile-img-poster"><img src="img/movie-avengers.jpg" alt="The Avengers" loading="lazy" decoding="async">
+            <span class="tile-year">2012</span>
           </div>
-          <div class="card-body">
-            <h3>Avengers: Endgame (2019)</h3>
-            <p>Penyelesaian saga Infinity — semua superhero MCU berkumpul menghadapi Thanos.</p>
-            <a href="movies.html" class="btn btn-small">Lihat Film →</a>
+          <div class="tile-body">
+            <h3>The Avengers</h3>
+            <p>Tim superhero pertama MCUpah.</p>
           </div>
-        </article>
-        <article class="card">
-          <div class="card-img" style="background:#0c1a3d;">
-            <img src="https://www.impawards.com/2021/spiderman_no_way_home.jpg" alt="Spider-Man" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'placeholder\'>Spider-Man: No Way Home</span>'">
-          </div>
-          <div class="card-body">
-            <h3>Spider-Man: No Way Home (2021)</h3>
-            <p>Peter Parker mengungkap identitasnya — multiverse terbuka, Spider-Man dari seluruh timeline muncul.</p>
-            <a href="movies.html" class="btn btn-small">Lihat Film →</a>
-          </div>
-        </article>
+        </a>
+        </div>
       </div>
     </section>
 
-    <!-- Berita Game Patch & Anime Musim -->
-    <section class="section">
-      <h2 class="section-title">📰 Berita Terbaru</h2>
-      <div class="news-list">
-        <article class="news-item">
-          <div class="news-date">22 Oktober 2026</div>
-          <h3>Wuthering Waves Version 3.7 — Patch Terbaru</h3>
-          <p>Update 3.7 "Prism's Illusion" rilis: Resonator 5-star Hsin, event "As Full as Tonight, Forever", boost drop rate Buling, Taoqi, Youhu.</p>
-          <a href="news.html" class="btn btn-small">Baca →</a>
-        </article>
-        <article class="news-item">
-          <div class="news-date">15 Oktober 2026</div>
-          <h3>Genshin Impact — Update Wilayah & Karakter Baru</h3>
-          <p>Info update wilayah baru, penambahan karakter, dan event anniversary musim gugur di Genshin Impact.</p>
-          <a href="news.html" class="btn btn-small">Baca →</a>
-        </article>
-        <article class="news-item">
-          <div class="news-date">8 Oktober 2026</div>
-          <h3>Honkai: Star Rail Version 4.5 — Patch Astropolis</h3>
-          <p>Update 4.5 "To Roll the Stars in Astropolis": wilayah baru Astropolis, karakter baru, kolaborasi Fate/UBW.</p>
-          <a href="news.html" class="btn btn-small">Baca →</a>
-        </article>
-        <article class="news-item">
-          <div class="news-date">1 Oktober 2026</div>
-          <h3>Zenless Zone Zero — Update Konten Terbaru</h3>
-          <p>Patch terbaru ZZZ: konten baru, event, dan penambahan karakter Roxy.</p>
-          <a href="news.html" class="btn btn-small">Baca →</a>
-        </article>
-        <article class="news-item">
-          <div class="news-date">25 September 2026</div>
-          <h3>Anime Musim Ini — Rekomendasi Tayang 2026</h3>
-          <p>Preview anime musim ini: action, fantasy, slice of life. Cek Crunchyroll, Netflix, dan Disney+ untuk jadwal rilis.</p>
-          <a href="anime.html" class="btn btn-small">Lihat Anime →</a>
-        </article>
-        <article class="news-item">
-          <div class="news-date">1 Oktober 2026</div>
-          <h3>Marvel Studios — Film & Serial TV Terbaru</h3>
-          <p>Marvel Update: film Avengers: Doomsday rilis Desember 2026, plus serial TV MCU terbaru. Cek Disney+.</p>
-          <a href="movies.html" class="btn btn-small">Lihat Film →</a>
-        </article>
+    <!-- ============ BERITA ============ -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">Berita Terbaru</h2>
+          <a href="news.html" class="section-more">Semua berita &rarr;</a>
+        </header>
+        <div class="news-grid">
+          <a href="news.html" class="news-card">
+            <span class="news-date">22 Oktober 2026</span>
+            <h3>Wuthering Waves 3.7 — Prism's Illusion</h3>
+            <p>Resonator 5-star Hsin, event "As Full as Tonight, Forever", dan boost drop rate beberapa karakter.</p>
+            <span class="cat-link">Selengkapnya &rarr;</span>
+          </a>
+          <a href="news.html" class="news-card">
+            <span class="news-date">15 Oktober 2026</span>
+            <h3>Genshin Impact — Update Wilayah & Karakter</h3>
+            <p>Info wilayah baru, karakter baru, dan event anniversary musim gugur.</p>
+            <span class="cat-link">Selengkapnya &rarr;</span>
+          </a>
+          <a href="news.html" class="news-card">
+            <span class="news-date">8 Oktober 2026</span>
+            <h3>Honkai: Star Rail 4.5 — Astropolis</h3>
+            <p>Wilayah baru Astropolis, karakter baru, dan kolaborasi Fate/UBW.</p>
+            <span class="cat-link">Selengkapnya &rarr;</span>
+          </a>
+          <a href="movies.html" class="news-card">
+            <span class="news-date">1 Oktober 2026</span>
+            <h3>Marvel Studios — Avengers Doomsday</h3>
+            <p>Film MCU rilis Desember 2026, ditambah serial TV terbaru. Cek Disney+.</p>
+            <span class="cat-link">Selengkapnya &rarr;</span>
+          </a>
+          <a href="news.html" class="news-card">
+            <span class="news-date">1 Oktober 2026</span>
+            <h3>Zenless Zone Zero — Update Konten</h3>
+            <p>Patch terbaru: konten, event, dan penambahan karakter Roxy.</p>
+            <span class="cat-link">Selengkapnya &rarr;</span>
+          </a>
+          <a href="anime.html" class="news-card">
+            <span class="news-date">25 September 2026</span>
+            <h3>Lineup Anime Musim Gugur 2026</h3>
+            <p>Enam anime yang sedang tayang, lengkap dengan jadwal dan platform legal.</p>
+            <span class="cat-link">Selengkapnya &rarr;</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- Download Preview (nanti diganti gambar user) -->
+    <!-- ============ KATEGORI ============ -->
     <section class="section">
-      <h2 class="section-title">📥 Download</h2>
-      <div class="download-grid">
-        <div class="download-item">
-          <div class="dl-icon">🖼️</div>
-          <h4>Wuthering Waves — Wallpaper</h4>
-          <p>Resolusi 1920x1080 (nanti diganti gambar HD)</p>
-          <a href="download.html" class="download-btn">Download →</a>
-        </div>
-        <div class="download-item">
-          <div class="dl-icon">🖼️</div>
-          <h4>Genshin Impact — Wallpaper</h4>
-          <p>Resolusi 1920x1080 (nanti diganti gambar HD)</p>
-          <a href="download.html" class="download-btn">Download →</a>
-        </div>
-        <div class="download-item">
-          <div class="dl-icon">🖼️</div>
-          <h4>Marvel — Poster</h4>
-          <p>Resolusi 1920x1080 (nanti diganti gambar HD)</p>
-          <a href="download.html" class="download-btn">Download →</a>
-        </div>
-        <div class="download-item">
-          <div class="dl-icon">📋</div>
-          <h4>Genshin Impact — Panduan Pemula</h4>
-          <p>Tips eksplorasi & elemen</p>
-          <a href="download.html" class="download-btn">Download →</a>
-        </div>
-        <div class="download-item">
-          <div class="dl-icon">📋</div>
-          <h4>Marvel — Timeline MCU</h4>
-          <p>Urutan film MCU</p>
-          <a href="download.html" class="download-btn">Download →</a>
-        </div>
-        <div class="download-item">
-          <div class="dl-icon">📋</div>
-          <h4>Anime — Cheat Sheet</h4>
-          <p>Daftar karakter & sinopsis</p>
-          <a href="download.html" class="download-btn">Download →</a>
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">Jelajahi</h2>
+        </header>
+        <div class="cat-grid">
+          <a href="database.html" class="cat-card">
+            <div class="cat-card-body">
+              <h3>Database</h3>
+              <p>Spesifikasi, developer, platform, dan link resmi setiap game.</p>
+            </div>
+          </a>
+          <a href="streaming.html" class="cat-card">
+            <div class="cat-card-body">
+              <h3>Streaming</h3>
+              <p>Trailer dan character demo resmi, dikelompokkan per game.</p>
+            </div>
+          </a>
+          <a href="download.html" class="cat-card">
+            <div class="cat-card-body">
+              <h3>Download</h3>
+              <p>Link ke galeri wallpaper resmi dan panduan gratis.</p>
+            </div>
+          </a>
+          <a href="news.html" class="cat-card">
+            <div class="cat-card-body">
+              <h3>Berita Patch</h3>
+              <p>Ringkasan update tiap game dan jadwal anime musim ini.</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -316,8 +340,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© 2025 Starwise. Game, Anime & Film.</p>
-      <p>Konten untuk tujuan informasi & hiburan.</p>
+      <p>&copy; 2025 Starwise. Game, Anime &amp; Film.</p>
+      <p>Konten untuk tujuan informasi &amp; hiburan.</p>
     </div>
   </footer>
 
