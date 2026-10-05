@@ -1,1 +1,3 @@
+# Data sumber untuk generator halaman panduan (build_guide.py).
+# Bisa diedit lalu di-regenerate dengan: python build_guide.py _data_genshin.json ...
 _data_*.json
