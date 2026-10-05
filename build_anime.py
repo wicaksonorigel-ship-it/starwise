@@ -154,47 +154,56 @@ def table_rows():
 
 
 def playlist_cards():
+    """Kartu playlist. Video di channel ini mematikan embed (Error 153),
+    jadi kartu ini membuka playlist di YouTube, bukan memutar iframe."""
     out = []
     for p in PLAYLISTS:
         if not p.get("videos"):
             continue
-        first = p["videos"][0]
         title = p["title"].replace("[English Sub]", "").strip()
         out.append(
-            '        <article class="pl-card">\n'
-            '          <div class="pl-thumb">\n'
+            '        <a class="pl-card" target="_blank" rel="noopener"\n'
+            '           href="https://www.youtube.com/playlist?list=%s">\n'
+            '          <span class="pl-thumb">\n'
             '            <img src="%s" alt="%s" loading="lazy" decoding="async">\n'
             '            <span class="pl-count">%d episode</span>\n'
-            '            <button class="pl-play" type="button" '
-            'data-playlist="%s" data-video="%s" data-title="%s" '
-            'aria-label="Putar %s">&#9654;</button>\n'
-            '          </div>\n'
-            '          <div class="pl-body">\n'
-            '            <h3>%s</h3>\n'
-            '            <p>Episode lengkap dengan subtitle Inggris, diunggah resmi oleh Muse Asia.</p>\n'
-            '            <a class="pl-link" target="_blank" rel="noopener" '
-            'href="https://www.youtube.com/playlist?list=%s">Buka di YouTube &rarr;</a>\n'
-            '          </div>\n'
-            '        </article>'
-            % (p["thumb"], esc(title), p["count"], p["pid"], first,
-               esc(title), esc(title), esc(title), p["pid"]))
+            '            <span class="pl-play" aria-hidden="true">&#9654;</span>\n'
+            '          </span>\n'
+            '          <span class="pl-body">\n'
+            '            <strong>%s</strong>\n'
+            '            <span class="pl-desc">Episode lengkap dengan subtitle Inggris,\n'
+            '            diunggah resmi oleh Muse Asia.</span>\n'
+            '            <span class="pl-link">Buka di YouTube &rarr;</span>\n'
+            '          </span>\n'
+            '        </a>'
+            % (p["pid"], p["thumb"], esc(title), p["count"], esc(title)))
     return "\n".join(out)
 
 
-def player_block():
-    return (
-        '    <section class="section" id="pemutar">\n'
-        '      <h2 class="section-title">&#9654; Pemutar Episode</h2>\n'
-        '      <p class="section-intro">Pilih playlist di atas, lalu putar di sini. '
-        'Video berasal dari channel resmi Muse Asia.</p>\n'
-        '      <div class="player" id="player-box">\n'
-        '        <div class="player-empty" id="player-empty">\n'
-        '          <span class="player-empty-ico">&#9654;</span>\n'
-        '          <p>Belum ada video dipilih. Klik tombol putar pada salah satu playlist di atas.</p>\n'
-        '        </div>\n'
-        '        <div class="player-frame" id="player-frame" hidden></div>\n'
-        '      </div>\n'
-        '    </section>')
+def trailer_block():
+    """Trailer resmi. Pola ini sama dengan halaman streaming yang sudah
+    terbukti bisa diputar, jadi embed diaktifkan."""
+    items = []
+    for key in ORDER:
+        a = ANIME[key]
+        items.append(
+            '        <div class="video-card">\n'
+            '          <div class="video-thumb">\n'
+            '            <iframe src="https://www.youtube.com/embed/%s"\n'
+            '                    title="Trailer %s" loading="lazy"\n'
+            '                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"\n'
+            '                    allowfullscreen\n'
+            '                    style="position:absolute; inset:0; width:100%%; height:100%%; border:none;">\n'
+            '          </div>\n'
+            '          <div class="video-body">\n'
+            '            <h3>%s</h3>\n'
+            '            <p>%s</p>\n'
+            '            <a href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener"\n'
+            '               class="video-link">Tonton di YouTube</a>\n'
+            '          </div>\n'
+            '        </div>'
+            % (a["vid"], esc(a["title"]), esc(a["title"]), esc(a["genre"]), a["vid"]))
+    return "\n".join(items)
 
 
 def build():
@@ -290,18 +299,26 @@ def build():
       </div>
     </section>
 
-    <section class="section" id="playlist">
-      <h2 class="section-title">&#127916; Playlist Episode</h2>
+    <section class="section">
+      <h2 class="section-title">&#9654; Trailer Resmi</h2>
       <p class="section-intro">
-        Playlist dari channel resmi Muse Asia. Video di-embed langsung dari YouTube,
-        jadi kualitas dan ketersediaan mengikuti channel tersebut.
+        Trailer dari kanal resmi tiap studio. Video di-embed langsung dari YouTube.
+      </p>
+      <div class="video-grid">
+{trailers}
+      </div>
+    </section>
+
+    <section class="section" id="playlist">
+      <h2 class="section-title">&#127916; Playlist Episode Lengkap</h2>
+      <p class="section-intro">
+        Playlist dari channel resmi Muse Asia. Chanel ini mematikan fitur embed,
+        jadi setiap kartu membuka playlist di tab YouTube.
       </p>
       <div class="pl-grid">
 {playlist_cards}
       </div>
     </section>
-
-{player}
 
     <section class="section">
       <h2 class="section-title">&#128161; Platform Legal</h2>
@@ -336,7 +353,6 @@ def build():
     </div>
   </footer>
 
-  <script src="js/anime.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
@@ -349,7 +365,7 @@ def build():
         hero_cards=hero_cards(),
         rows=table_rows(),
         playlist_cards=playlist_cards(),
-        player=player_block(),
+        trailers=trailer_block(),
         platforms=platforms,
     )
 

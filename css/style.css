@@ -1887,7 +1887,22 @@ html, body {
 .pl-play:hover { transform: scale(1.12); }
 .pl-play:focus-visible { opacity: 1; outline: 2px solid var(--accent); }
 
-.pl-body { padding: 14px 16px 16px; }
+.pl-body { padding: 14px 16px 16px; display: block; }
+
+.pl-card strong {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.pl-desc {
+  display: block;
+  margin: 0 0 10px;
+  color: var(--fg-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
 
 .pl-body h3 {
   font-size: 0.95rem;
@@ -1902,6 +1917,21 @@ html, body {
   line-height: 1.55;
 }
 
+.pl-desc {
+  display: block;
+  margin: 0 0 10px;
+  color: var(--fg-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.pl-body strong {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
 .pl-link {
   color: var(--accent);
   font-size: 0.82rem;
@@ -1912,51 +1942,16 @@ html, body {
 .pl-link:hover { text-decoration: underline; }
 
 /* Pemutar */
-.player {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  scroll-margin-top: 80px;
-}
 
-.player-empty {
-  display: grid;
-  place-items: center;
-  gap: 10px;
-  padding: 54px 20px;
-  text-align: center;
-}
 
-.player-empty-ico {
-  display: grid;
-  place-items: center;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--bg-card-hover);
-  border: 1px solid var(--border);
-  color: var(--accent);
-  font-size: 1.4rem;
-}
 
-.player-empty p {
-  margin: 0;
-  color: var(--fg-muted);
-  font-size: 0.88rem;
-  max-width: 340px;
-}
 
-.player-frame { aspect-ratio: 16 / 9; background: #000; }
-.player-frame[hidden] { display: none; }
-.player-frame iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
 
 @media (max-width: 640px) {
   .stat-row { grid-template-columns: repeat(2, 1fr); }
   .pl-grid, .anime-grid { grid-template-columns: 1fr; }
 }
+
+
+
+
