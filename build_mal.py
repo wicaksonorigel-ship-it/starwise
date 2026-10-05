@@ -14,6 +14,8 @@ import time
 import urllib.request
 
 BASE = pathlib.Path(__file__).parent
+MAL_IMG_DIR = BASE / "img" / "mal"
+IMG_SEQ = [0]  # counter global nama file
 UA = {"User-Agent":
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36"}
 
@@ -26,6 +28,25 @@ LISTS = [
 PER_LIST = 12
 START_ID = "mal-lists"
 
+
+def save_image(url):
+    """Unduh poster ke img/mal/ supaya tidak hotlink (MAL memblokir pemuatan
+    gambar dari domain lain, jadi kartu akan kosong kalau di-host di luar)."""
+    if not url:
+        return ""
+    MAL_IMG_DIR.mkdir(parents=True, exist_ok=True)
+    IMG_SEQ[0] += 1
+    name = "mal-%02d.jpg" % IMG_SEQ[0]
+    path = MAL_IMG_DIR / name
+    try:
+        req = urllib.request.Request(url, headers=UA)
+        data = urllib.request.urlopen(req, timeout=25).read()
+        if len(data) > 3000:
+            path.write_bytes(data)
+            return "img/mal/" + name
+    except Exception:
+        pass
+    return ""
 
 def fetch(kind):
     url = "https://myanimelist.net/topanime.php"
@@ -55,7 +76,8 @@ def fetch(kind):
             m2 = re.search(r'data-srcset="https://cdn\.myanimelist\.net/r/(\d+x\d+)/([^"]+?)\s', r)
             if m2:
                 full = "https://cdn.myanimelist.net/r/%s/%s" % (m2.group(1), m2.group(2))
-        out.append({"title": title, "link": link, "img": full, "info": text})
+        out.append({"title": title, "link": link, "img": full,
+                    "local": save_image(full), "info": text})
         if len(out) >= PER_LIST:
             break
     return out
@@ -68,8 +90,9 @@ def esc(s):
 def section(kind, label, desc, items):
     cards = []
     for a in items:
-        thumb = ('<img src="%s" alt="" loading="lazy" decoding="async">' % esc(a["img"])) \
-            if a["img"] else '<span class="mal-noimg">&#128250;</span>'
+        src = a.get("local") or a.get("img") or ""
+        thumb = ('<img src="%s" alt="" loading="lazy" decoding="async">' % esc(src)) \
+            if src else '<span class="mal-noimg">&#128250;</span>'
         cards.append(
             '        <a class="mal-card" href="%s" target="_blank" rel="noopener">\n'
             '          <span class="mal-poster">%s</span>\n'
