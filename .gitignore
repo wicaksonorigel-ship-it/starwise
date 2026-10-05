@@ -9,3 +9,6 @@ _anime_img.json
 # Python
 __pycache__/
 *.pyc
+
+# Playlist Muse Asia untuk generator anime
+_muse_playlists.json
