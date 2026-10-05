@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime — Starwise</title>
+  <meta name="description" content="Daftar anime musim ini: judul, genre, jadwal tayang, platform legal, dan trailer resmi.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,221 +15,124 @@
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="games.html">Games</a>
-        <a href="anime.html" class="active">Anime</a>
+        <a href="anime.html">Anime</a>
         <a href="movies.html">Film</a>
         <a href="news.html">Berita</a>
         <a href="database.html">Database</a>
         <a href="streaming.html">Streaming</a>
         <a href="download.html">Download</a>
       </nav>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     </div>
   </header>
 
   <main class="container">
 
-    <!-- Page Header -->
+    <nav class="breadcrumb" aria-label="Navigasi">
+      <a href="index.html">Home</a>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-cur">Anime</span>
+    </nav>
+
     <div class="page-header">
-      <h1>📺 Anime</h1>
-      <p>Ulasan, rekomendasi, dan panduan anime — lengkap dengan informasi streaming legal.</p>
+      <h1>Anime</h1>
+      <p class="page-sub">Anime yang sedang tayang musim ini, lengkap dengan genre dan trailer resmi.</p>
     </div>
 
-    <!-- Search -->
-    <div class="search-box" style="margin:16px 0;">
-      <input type="text" id="search-anime" placeholder="Cari judul anime...">
-      <button id="search-anime-btn" class="btn btn-primary">Cari</button>
-    </div>
-
-    <!-- Trending Anime -->
     <section class="section">
-      <h2 class="section-title">🔥 Trending Anime</h2>
+      <h2 class="section-title">&#128293; Sedang Tayang</h2>
+      <p class="section-intro">Lineup musim gugur 2026. Trailer di bawah diambil dari channel resmi tiap anime.</p>
       <div class="anime-grid">
-
         <article class="anime-card">
-          <div class="anime-card-img">
-            <img src="" alt="Anime" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'anime-placeholder\'>Trending</span>'">
-          </div>
-          <div class="anime-card-body">
-            <span class="anime-rank">#1 Trending</span>
-            <h3>Anime Title Trending</h3>
-            <p>Deskripsi singkat tentang anime yang sedang tren. Cerita menarik dengan karakter yang dicintai fans.</p>
-            <div class="anime-meta">
-              <span class="anime-genre">Action</span>
-              <span class="anime-genre">Fantasy</span>
-              <span class="anime-status">Ongoing</span>
+          <a href="https://www.youtube.com/watch?v=2KBxrmKh-M0" target="_blank" rel="noopener" class="anime-card-link">
+            <div class="anime-card-img">
+              <img src="img/anime-apothecary.jpg" alt="The Apothecary Diaries Season 3" loading="lazy" decoding="async">
+              <span class="anime-rank">Ongoing</span>
             </div>
-            <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="btn btn-small">Tonton Legal →</a>
-          </div>
+            <div class="anime-card-body">
+              <h3>The Apothecary Diaries Season 3</h3>
+              <p class="anime-genre">Drama, Fantasy, Slice of Life</p>
+              <p>Maomao Courtney bekerja sebagai apoteker dizynat istana. Season 3 melanjutkan kasus lingkungan dan politik yang lebih rumit.</p>
+              <span class="cat-link">Tonton Trailer →</span>
+            </div>
+          </a>
         </article>
-
         <article class="anime-card">
-          <div class="anime-card-img">
-            <img src="" alt="Anime" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'anime-placeholder\'>Trending</span>'">
-          </div>
-          <div class="anime-card-body">
-            <span class="anime-rank">#2 Trending</span>
-            <h3>Anime Title Trending</h3>
-            <p>Deskripsi singkat tentang anime trending lainnya. Drama menarik dengan plot yang menggugah emosi.</p>
-            <div class="anime-meta">
-              <span class="anime-genre">Drama</span>
-              <span class="anime-genre">Slice of Life</span>
-              <span class="anime-status">Ongoing</span>
+          <a href="https://www.youtube.com/watch?v=CXoluVnOiR8" target="_blank" rel="noopener" class="anime-card-link">
+            <div class="anime-card-img">
+              <img src="img/anime-tougenanki.jpg" alt="TOUGEN ANKI" loading="lazy" decoding="async">
+              <span class="anime-rank">Ongoing</span>
             </div>
-            <a href="https://www.netflix.com/" target="_blank" rel="noopener" class="btn btn-small">Tonton Legal →</a>
-          </div>
+            <div class="anime-card-body">
+              <h3>TOUGEN ANKI</h3>
+              <p class="anime-genre">Action, Supernatural, Dark Fantasy</p>
+              <p>Kagari, seorang compenserifi muda, menjadi anggota Replace Table. Cerita penuh konflik antara yokai dan manusia.</p>
+              <span class="cat-link">Tonton Trailer →</span>
+            </div>
+          </a>
         </article>
-
         <article class="anime-card">
-          <div class="anime-card-img">
-            <img src="" alt="Anime" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'anime-placeholder\'>Trending</span>'">
-          </div>
-          <div class="anime-card-body">
-            <span class="anime-rank">#3 Trending</span>
-            <h3>Anime Title Trending</h3>
-            <p>Deskripsi singkat tentang anime trending ketiga. Action mendebar dengan animasi yang memukau.</p>
-            <div class="anime-meta">
-              <span class="anime-genre">Action</span>
-              <span class="anime-genre">Sci-Fi</span>
-              <span class="anime-status">Completed</span>
+          <a href="https://www.youtube.com/watch?v=OVvqYrAXRqc" target="_blank" rel="noopener" class="anime-card-link">
+            <div class="anime-card-img">
+              <img src="img/anime-blackclover.jpg" alt="Black Clover Season 2" loading="lazy" decoding="async">
+              <span class="anime-rank">Ongoing</span>
             </div>
-            <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="btn btn-small">Tonton Legal →</a>
-          </div>
+            <div class="anime-card-body">
+              <h3>Black Clover Season 2</h3>
+              <p class="anime-genre">Action, Fantasy, Adventure</p>
+              <p>Asta dan CharmyBlack kembali untuk season 2.IMA_ACTION dan masa depan Magic Kingdom.</p>
+              <span class="cat-link">Tonton Trailer →</span>
+            </div>
+          </a>
         </article>
-
+        <article class="anime-card">
+          <a href="https://www.youtube.com/watch?v=yrC7SwQDbE4" target="_blank" rel="noopener" class="anime-card-link">
+            <div class="anime-card-img">
+              <img src="img/anime-overgeared.jpg" alt="Overgeared" loading="lazy" decoding="async">
+              <span class="anime-rank">Ongoing</span>
+            </div>
+            <div class="anime-card-body">
+              <h3>Overgeared</h3>
+              <p class="anime-genre">Action, Fantasy, Overpowered</p>
+              <p>Proto Korea, samurai muda dengan kemampuan yang tak terbatas, tiba di duniaMMO penuhguild dan quest.</p>
+              <span class="cat-link">Tonton Trailer →</span>
+            </div>
+          </a>
+        </article>
+        <article class="anime-card">
+          <a href="https://www.youtube.com/watch?v=CTm3ynhIRbQ" target="_blank" rel="noopener" class="anime-card-link">
+            <div class="anime-card-img">
+              <img src="img/anime-rayearth.jpg" alt="Magic Knight Rayearth" loading="lazy" decoding="async">
+              <span class="anime-rank">Ongoing</span>
+            </div>
+            <div class="anime-card-body">
+              <h3>Magic Knight Rayearth</h3>
+              <p class="anime-genre">Action, Fantasy, Mecha</p>
+              <p>Celine, Hikaru, dan Fu harus menyatukan pasukan Toumashia untukProtect dunia dari NX.</p>
+              <span class="cat-link">Tonton Trailer →</span>
+            </div>
+          </a>
+        </article>
+        <article class="anime-card">
+          <a href="https://www.youtube.com/watch?v=yK-dYBawGk4" target="_blank" rel="noopener" class="anime-card-link">
+            <div class="anime-card-img">
+              <img src="img/anime-frieren2.jpg" alt="Frieren: Beyond Journey's End Season 2" loading="lazy" decoding="async">
+              <span class="anime-rank">Ongoing</span>
+            </div>
+            <div class="anime-card-body">
+              <h3>Frieren: Beyond Journey's End Season 2</h3>
+              <p class="anime-genre">Adventure, Drama, Fantasy</p>
+              <p>Frieren dan party's perjalanan memasuki fase baru setelah arc sebelumnya selesai.</p>
+              <span class="cat-link">Tonton Trailer →</span>
+            </div>
+          </a>
+        </article>
       </div>
     </section>
 
-    <!-- Anime by Genre -->
     <section class="section">
-      <h2 class="section-title">🎭 Anime by Genre</h2>
-
-      <div class="genre-section">
-        <h3 class="genre-title">⚔️ Action</h3>
-        <div class="anime-list">
-          <div class="anime-item">
-            <h4>Anime Action 1</h4>
-            <p>Action-packed anime dengan pertarungan epik dan karakter yang kuat. Cocok untuk fans action yang suka kejar-kejar dan pertarungan besar.</p>
-            <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="btn btn-small">Info →</a>
-          </div>
-          <div class="anime-item">
-            <h4>Anime Action 2</h4>
-            <p>Anime aksi lain dengan tema samurai dan pejuang yang berkämpuh demi keadilan.</p>
-            <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="btn btn-small">Info →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="genre-section">
-        <h3 class="genre-title">🧙 Fantasy</h3>
-        <div class="anime-list">
-          <div class="anime-item">
-            <h4>Anime Fantasy 1</h4>
-            <p>Dunia fantasy dengan sihir, monster, dan petualangan magic. Anime ini menawarkan world-building yang kaya.</p>
-            <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="btn btn-small">Info →</a>
-          </div>
-          <div class="anime-item">
-            <h4>Anime Fantasy 2</h4>
-            <p>Fantasy evolution dengan sistem magic yang unik dan cerita yang menarik.</p>
-            <a href="https://www.netflix.com/" target="_blank" rel="noopener" class="btn btn-small">Info →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="genre-section">
-        <h3 class="genre-title">💕 Romance</h3>
-        <div class="anime-list">
-          <div class="anime-item">
-            <h4>Anime Romance 1</h4>
-            <p>Cerita cinta yang manis dan mengharukan. Cocok untuk yang suka drama romance dan hubungan karakter yang berkembang perlahan.</p>
-            <a href="https://www.netflix.com/" target="_blank" rel="noopener" class="btn btn-small">Info →</a>
-          </div>
-          <div class="anime-item">
-            <h4>Anime Romance 2</h4>
-            <p>Romance dengan komedi ringan dan momen yang membuat ketawa bersama cinta.</p>
-            <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="btn btn-small">Info →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="genre-section">
-        <h3 class="genre-title">🌌 Sci-Fi / Mecha</h3>
-        <div class="anime-list">
-          <div class="anime-item">
-            <h4>Anime Sci-Fi 1</h4>
-            <p>Anime sci-fi dengan teknologi masa depan, robot mekanik, dan konflik antarbangsa.</p>
-            <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="btn btn-small">Info →</a>
-          </div>
-          <div class="anime-item">
-            <h4>Anime Mecha 2</h4>
-            <p>Pilot mekanik raksasa dengan misi yang mengancam peradaban. Action dan drama perang luar angkasa.</p>
-            <a href="https://www.netflix.com/" target="_blank" rel="noopener" class="btn btn-small">Info →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Completed vs Ongoing -->
-    <section class="section">
-      <h2 class="section-title">📋 Status Anime</h2>
-
-      <div class="status-grid">
-        <div class="status-card">
-          <h3 class="status-title">✅ Anime Completed</h3>
-          <div class="status-list">
-            <div class="status-item">
-              <h4>Anime Completed 1</h4>
-              <p>Anime yang sudah selesai rilis. Bisa ditonton dari awal sampai akhir tanpa nunggu update.</p>
-              <span class="status-badge completed">Selesai</span>
-            </div>
-            <div class="status-item">
-              <h4>Anime Completed 2</h4>
-              <p>Serie klasik yang wajib ditonton untuk fans anime sejati. Cerita mendalam dan karakter memorable.</p>
-              <span class="status-badge completed">Selesai</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="status-card">
-          <h3 class="status-title">🔄 Anime Ongoing</h3>
-          <div class="status-list">
-            <div class="status-item">
-              <h4>Anime Ongoing 1</h4>
-              <p>Anime yang sedang tayang. Update rutin setiap minggu/bulan sesuai jadwal rilis.</p>
-              <span class="status-badge ongoing">Tayang</span>
-            </div>
-            <div class="status-item">
-              <h4>Anime Ongoing 2</h4>
-              <p>Anime musim ini dengan hype besar. Follow official account untuk update episode.</p>
-              <span class="status-badge ongoing">Tayang</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Watch Order Guide -->
-    <section class="section">
-      <h2 class="section-title">📺 Panduan Urutan Nonton</h2>
-      <div class="guide-section">
-        <h3 class="guide-title">💡 Cara Menonton Anime dengan Baik</h3>
-        <div class="guide-content">
-          <ol>
-            <li><strong>Tentukan genre yang suka</strong> — Action, fantasy, romance, dll. Pilih sesuai minat.</li>
-            <li><strong>Cek status anime</strong> — Completed lebih baik untuk yang ingin nonton full cerita tanpa nunggu.</li>
-            <li><strong>Gunakan platform legal</strong> — Crunchyroll, Netflix, Disney+ untuk pengalaman nonton terbaik.</li>
-            <li><strong>Ikuti official account</strong> — Pantau Twitter/YouTube anime official untuk update terbaru.</li>
-          </ol>
-          <p><strong>Tips:</strong> Untuk anime dengan banyak season, cek urutan rilis episode sebelum mulai nonton.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Daftar Anime Lengkap -->
-    <section class="section">
-      <h2 class="section-title">📚 Daftar Anime</h2>
+      <h2 class="section-title">&#128203; Daftar Anime</h2>
+      <p class="section-intro">Detail jadwal tayang dan platform legal untuk tiap judul.</p>
       <div class="db-table-wrapper">
         <table class="db-table">
           <thead>
@@ -236,83 +140,115 @@
               <th>Judul</th>
               <th>Genre</th>
               <th>Status</th>
+              <th>Mulai Tayang</th>
               <th>Platform Legal</th>
               <th>Trailer</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Anime Title 1</strong></td>
-              <td>Action, Fantasy</td>
-              <td>Completed</td>
-              <td>
-                <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="video-link">Crunchyroll</a>
-              </td>
-              <td><a href="https://www.youtube.com/results?search_query=anime+official+trailer" target="_blank" rel="noopener" class="video-link">YouTube</a></td>
-            </tr>
-            <tr>
-              <td><strong>Anime Title 2</strong></td>
-              <td>Drama, Romance</td>
+              <td><strong>The Apothecary Diaries Season 3</strong></td>
+              <td>Drama, Fantasy, Slice of Life</td>
               <td>Ongoing</td>
-              <td>
-                <a href="https://www.netflix.com/" target="_blank" rel="noopener" class="video-link">Netflix</a>
-              </td>
-              <td><a href="https://www.youtube.com/results?search_query=anime+official+trailer" target="_blank" rel="noopener" class="video-link">YouTube</a></td>
+              <td>2 Oktober 2026</td>
+              <td>Netflix, Crunchyroll</td>
+              <td><a href="https://www.youtube.com/watch?v=2KBxrmKh-M0" target="_blank" rel="noopener" class="video-link">Trailer</a></td>
             </tr>
             <tr>
-              <td><strong>Anime Title 3</strong></td>
-              <td>Sci-Fi, Mecha</td>
-              <td>Completed</td>
-              <td>
-                <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="video-link">Crunchyroll</a>
-              </td>
-              <td><a href="https://www.youtube.com/results?search_query=anime+official+trailer" target="_blank" rel="noopener" class="video-link">YouTube</a></td>
-            </tr>
-            <tr>
-              <td><strong>Anime Title 4</strong></td>
-              <td>Action, Adventure</td>
+              <td><strong>TOUGEN ANKI</strong></td>
+              <td>Action, Supernatural, Dark Fantasy</td>
               <td>Ongoing</td>
-              <td>
-                <a href="https://www.disneyplus.com/" target="_blank" rel="noopener" class="video-link">Disney+</a>
-              </td>
-              <td><a href="https://www.youtube.com/results?search_query=anime+official+trailer" target="_blank" rel="noopener" class="video-link">YouTube</a></td>
+              <td>2 Oktober 2026</td>
+              <td>Crunchyroll</td>
+              <td><a href="https://www.youtube.com/watch?v=CXoluVnOiR8" target="_blank" rel="noopener" class="video-link">Trailer</a></td>
+            </tr>
+            <tr>
+              <td><strong>Black Clover Season 2</strong></td>
+              <td>Action, Fantasy, Adventure</td>
+              <td>Ongoing</td>
+              <td>3 Oktober 2026</td>
+              <td>Crunchyroll</td>
+              <td><a href="https://www.youtube.com/watch?v=OVvqYrAXRqc" target="_blank" rel="noopener" class="video-link">Trailer</a></td>
+            </tr>
+            <tr>
+              <td><strong>Overgeared</strong></td>
+              <td>Action, Fantasy, Overpowered</td>
+              <td>Ongoing</td>
+              <td>27 September 2026</td>
+              <td>Crunchyroll</td>
+              <td><a href="https://www.youtube.com/watch?v=yrC7SwQDbE4" target="_blank" rel="noopener" class="video-link">Trailer</a></td>
+            </tr>
+            <tr>
+              <td><strong>Magic Knight Rayearth</strong></td>
+              <td>Action, Fantasy, Mecha</td>
+              <td>Ongoing</td>
+              <td>Oktober 2026</td>
+              <td>Crunchyroll</td>
+              <td><a href="https://www.youtube.com/watch?v=CTm3ynhIRbQ" target="_blank" rel="noopener" class="video-link">Trailer</a></td>
+            </tr>
+            <tr>
+              <td><strong>Frieren: Beyond Journey's End Season 2</strong></td>
+              <td>Adventure, Drama, Fantasy</td>
+              <td>Ongoing</td>
+              <td>Oktober 2026</td>
+              <td>Crunchyroll</td>
+              <td><a href="https://www.youtube.com/watch?v=yK-dYBawGk4" target="_blank" rel="noopener" class="video-link">Trailer</a></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="review-infobreak" style="font-size:0.82rem; color:var(--fg-muted);">
-        ⚠️ Anime episode tersedia di platform berizin. Klik link resmi untuk tonton legal. Trailer & official clip tersedia di YouTube.
-      </p>
     </section>
 
-    <!-- Streaming Info -->
     <section class="section">
-      <h2 class="section-title">📡 Platform Streaming Anime</h2>
-      <div class="platform-grid">
-        <div class="platform-card">
-          <h3>Crunchyroll</h3>
-          <p>Platform streaming anime terbesar dengan ribuan judul. Update rutin untuk anime musim ini.</p>
-          <a href="https://www.crunchyroll.com/" target="_blank" rel="noopener" class="btn btn-small btn-primary">Visit →</a>
+      <h2 class="section-title">&#128161; Platform Legal</h2>
+      <p class="section-intro">Tonton anime lewat layanan berbayar berikut. Hindari situs streaming ilegal.</p>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-body">
+            <h3>Crunchyroll</h3>
+            <p>Pustaka anime terbesar dan paling cepat rilis episode. Banyak judul di halaman ini tayang di sini.</p>
+          </div>
         </div>
-        <div class="platform-card">
-          <h3>Netflix</h3>
-          <p>Netflix memiliki koleksi anime yang growing. Beberapa exclusif dan beberapa non-exclusive.</p>
-          <a href="https://www.netflix.com/" target="_blank" rel="noopener" class="btn btn-small btn-primary">Visit →</a>
+        <div class="card">
+          <div class="card-body">
+            <h3>Netflix</h3>
+            <p>Menyazon sebagian judul musiman, termasuk The Apothecary Diaries.</p>
+          </div>
         </div>
-        <div class="platform-card">
-          <h3>Disney+</h3>
-          <p>Disney+ menayangkan beberapa anime dan serial anime-related. Cocok untuk yang suka konten familier.</p>
-          <a href="https://www.disneyplus.com/" target="_blank" rel="noopener" class="btn btn-small btn-primary">Visit →</a>
+        <div class="card">
+          <div class="card-body">
+            <h3>Disney+ Hotstar</h3>
+            <p>Menyediakan beberapa judul anime secara musiman, tergantung wilayah.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3>YouTube Official</h3>
+            <p>Banyak anime memposting trailer dan episode gratis di channel resminya. Trailer di atas berasal dari sini.</p>
+          </div>
         </div>
       </div>
     </section>
+
+    <section class="section">
+      <h2 class="section-title">&#128218; Cara Menonton dengan Baik</h2>
+      <ul class="tip-list">
+        <li><strong>Tonton sesuai urutan release.</strong> Kalau baru mulai sebuah seri, ikuti urutan tayang aslinya. Urutan episode tidak selalu sama dengan urutan cerita.</li>
+        <li><strong>Tidak perlu nonton dua kali.</strong> Banyak anime sekarang menyediakan tontonan kali kedua dengan speed yang lebih cepat di layanan yang sama.</li>
+        <li><strong>Baca Platform legal saja.</strong> Selain masalah kualitas, situs ilegal juga berisiko bagi perangkat kamu.</li>
+        <li><strong>Perhatikan studio animasi.</strong> Studio yang sama biasanya konsisten dalam kualitas, berguna kalau kamu ingin rekomendasi serupa.</li>
+        <li><strong>Urutkan berdasarkan genre dulu.</strong> Kalau bisa Integrity satu genre selama beberapa judul, kamu lebih cepat menemukan anime yang benar-benar kamu)nikmati.</li>
+      </ul>
+    </section>
+
+    <p class="review-infobreak">Catatan: jadwal tayang bisa berubah sewaktu-waktu. Cek pengumuman resmi studio atau layanan streaming untuk informasi paling mutakhir.</p>
 
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© 2025 Starwise. Game, Anime & Film.</p>
-      <p>Konten untuk tujuan informasi & hiburan.</p>
+      <p>&copy; 2025 Starwise. Game, Anime &amp; Film.</p>
+      <p>Konten untuk tujuan informasi &amp; hiburan.</p>
     </div>
   </footer>
 

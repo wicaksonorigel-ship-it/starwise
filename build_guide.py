@@ -46,6 +46,10 @@ TPL = """<!DOCTYPE html>
       <span class="crumb-cur">{short}</span>
     </nav>
 
+    <div class="guide-hero">
+      <img src="{logo}" alt="{short}" loading="eager" decoding="async">
+    </div>
+
     <div class="page-header">
       <h1>{title}</h1>
       <p class="page-sub">Wiki panduan Starwise: gameplay, tips, dan strategi.</p>
@@ -140,6 +144,7 @@ def build(data):
     return TPL.format(
         title=data["title"], desc=data["desc"],
         short=data["title"].replace("Panduan ", ""),
+        logo=data.get("logo", ""),
         info=info, toc=toc, sections="\n\n".join(secs),
         stream=data["stream"])
 
