@@ -444,6 +444,203 @@ html, body {
   font-weight: 600;
 }
 
+.cat-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.78);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+/* ===== Breadcrumb halaman kategori ===== */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 4px;
+  font-size: 0.86rem;
+  color: var(--fg-muted);
+}
+
+.breadcrumb a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.crumb-sep { opacity: 0.5; }
+
+.crumb-cur { color: var(--fg); font-weight: 600; }
+
+.video-count {
+  margin-left: auto;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.page-sub {
+  margin-top: -4px;
+  margin-bottom: 0;
+}
+
+.page-sub strong { color: var(--accent); }
+
+/* ===== Filter / search kategori ===== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.filter-label { font-size: 0.88rem; font-weight: 600; }
+
+.filter-input {
+  flex: 1 1 240px;
+  min-width: 0;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 9px 13px;
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.filter-count {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.cat-card[hidden] { display: none; }
+
+/* ===== Halaman Panduan (guide) ===== */
+.guide-toc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.guide-toc li {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 11px 14px;
+}
+
+.guide-toc a {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.guide-toc a:hover { color: var(--accent); }
+
+.tip-list {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.tip-list li {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 12px 15px 12px 38px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.tip-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.82rem;
+}
+
+.tip-list li strong { color: var(--accent); }
+
+.section p {
+  color: var(--fg);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.section[id] { scroll-margin-top: 80px; }
+
+.section-intro {
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+  margin: -4px 0 16px;
+}
+
+/* Kartu link ke halaman panduan */
+.guide-link-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s;
+}
+
+.guide-link-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.guide-tag {
+  display: inline-block;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 3px 9px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+
+@media (max-width: 640px) {
+  .video-count { margin-left: 0; }
+  .guide-toc { grid-template-columns: 1fr; }
+}
+
 /* ===== Database Table ===== */
 .db-table-wrapper {
   background: var(--bg-card);

@@ -79,6 +79,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Filter kategori di halaman overview streaming
+  const catSearch = document.getElementById('cat-search');
+  const catGrid = document.getElementById('cat-grid');
+  const catEmpty = document.getElementById('cat-empty');
+  const catCount = document.getElementById('cat-search-count');
+
+  if (catSearch && catGrid) {
+    const catCards = Array.from(catGrid.querySelectorAll('.cat-card'));
+
+    function filterCats() {
+      const q = catSearch.value.trim().toLowerCase();
+      let shown = 0;
+
+      catCards.forEach(card => {
+        const haystack = (card.dataset.search || card.textContent).toLowerCase();
+        const hit = !q || haystack.includes(q);
+        card.hidden = !hit;
+        if (hit) shown++;
+      });
+
+      if (catEmpty) catEmpty.hidden = shown !== 0;
+      if (catCount) {
+        catCount.textContent = q
+          ? shown + ' dari ' + catCards.length + ' kategori cocok'
+          : catCards.length + ' kategori';
+      }
+    }
+
+    catSearch.addEventListener('input', filterCats);
+    filterCats();
+  }
+
+  // Thumbnail YouTube: maxresdefault -> hqdefault -> placeholder
+  document.querySelectorAll('img[data-fallback]').forEach(img => {
+    img.addEventListener('error', function () {
+      const fb = this.getAttribute('data-fallback');
+      if (fb && !this.dataset.tried) {
+        this.dataset.tried = '1';
+        this.src = fb;
+      }
+    });
+  });
+
   // Video cards: thumbnail click -> open YouTube in new tab
   const videoThumbs = document.querySelectorAll('.video-thumb');
   videoThumbs.forEach(thumb => {
