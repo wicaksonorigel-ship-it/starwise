@@ -58,6 +58,136 @@ def fetch(url):
         urllib.request.Request(url, headers=UA), timeout=30).read().decode("utf-8", "ignore")
 
 
+def download_image(url, dest):
+    """Unduh gambar ke dest, return True jika berhasil."""
+    if not url:
+        return False
+    if dest.exists() and dest.stat().st_size > 1000:
+        return True
+    try:
+        req = urllib.request.Request(url, headers=UA)
+        data = urllib.request.urlopen(req, timeout=30).read()
+        if len(data) < 500:
+            return False
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(data)
+        return True
+    except Exception:
+        return False
+
+
+def parse_skills(h):
+    """Ambil skill: nama, tipe, deskripsi. Return list of dict.
+
+    Setiap game pakai layout berbeda:
+      HSR      : <p class="skill-name">Nama</p> + <p class="skill-type"> + skill-with-coloring
+      ZZZ      : <p class="skill-name">Nama</p> + skill-info > skill-description
+      ZZZ v2   : <div class="skill-title"><p class="skill-name">Nama</p>... + <a class="skill-description">Deskripsi
+      WuWa     : <p class="ww-skill-name">Nama</p> + <p class="ww-skill-desc">Deskripsi
+      Endfield : <p class="skill-name">Nama</p> + <div class="skill-description">
+      NTE      : <p class="skill-name">Nama</p> + <div class="skill-with-coloring">
+    """
+    skills = []
+
+    def clean(s):
+        s = re.sub(r'<!--.*?-->', '', s, flags=re.S)   # hilangkan HTML comment
+        s = re.sub(r'<[^>]+>', '', s)
+        s = html.unescape(s).strip()
+        return re.sub(r'\s+', ' ', s)
+
+    # Ambil semua skill-name (boleh ada HTML comment di dalamnya)
+    name_pat = re.compile(
+        r'<p class="skill-name">(.*?)</p>', re.S)
+    for m in name_pat.finditer(h):
+        name_raw = m.group(1)
+        # hapus HTML comment & tag di dalam nama
+        name = clean(name_raw)
+
+        i = m.end()
+        stype = ""
+        desc = ""
+
+        # ---- TIPE ----
+        t = re.search(
+            r'<p class="skill-type">.*?<span class="type">([^<]+)</span>',
+            h[i:i + 2000], re.S)
+        if t:
+            stype = clean(t.group(1))
+
+        # ---- DESKRIPSI ----
+        zz = re.search(
+            r'<div class="skill-title">.*?<p class="skill-name">[^<]+</p>'
+            r'.*?</div>\s*<div class="skill-info">.*?skill-description">(.*?)</div>',
+            html.unescape(h[i:i + 30000]), re.S)
+        if zz:
+            desc = clean(zz.group(1))
+        else:
+            # skill-with-coloring (HSR)
+            cur = re.search(
+                r'<div class="skill-with-coloring[^"]*">(.*?)</div>',
+                h[i:i + 20000], re.S)
+            if cur:
+                desc = clean(cur.group(1))
+            else:
+                # Endfield: <div class="skill-description">
+                for pat in [
+                    r'<div class="skill-description">(.*?)</div>',
+                    r'<p class="description">(.*?)</p>',
+                    r'<div class="desc">(.*?)</div>',
+                    r'<p class="skill-desc">(.*?)</p>',
+                ]:
+                    cur = re.search(pat, html.unescape(h[i:i + 30000]), re.S)
+                    if cur:
+                        desc = clean(cur.group(1))
+                        break
+                else:
+                    # ZZZ v2: <a class="skill-description">
+                    zz2 = re.search(
+                        r'<div class="skill-info">.*?skill-description">(.*?)</div>',
+                        html.unescape(h[i:i + 30000]), re.S)
+                    if zz2:
+                        desc = clean(zz2.group(1))
+                    else:
+                        # WuWa: <p class="ww-skill-desc">
+                        ww = re.search(
+                            r'<p class="ww-skill-desc">(.*?)</p>',
+                            html.unescape(h[i:i + 30000]), re.S)
+                        if ww:
+                            desc = clean(ww.group(1))
+
+        skills.append({"name": name, "type": stype, "desc": desc[:500]})
+    return skills[:8]
+
+
+def parse_team(h):
+    """Ambil tim: nama karakter + icon URL. Return list of dict."""
+    team = []
+    # cari section Teams/Synergy
+    for kw in ['Synergy', 'Teams', 'teams']:
+        i = h.find(kw)
+        if i < 0:
+            continue
+        seg = h[i:i + 6000]
+        # pola: <img alt="Nama" ... src="...characters/slug_icon.webp">
+        for m in re.finditer(
+                r'<img alt="([^"]{2,30})"[^>]*src="([^"]*characters/[^"]*_icon[^"]*)"',
+                seg):
+            name = html.unescape(m.group(1).strip())
+            icon = m.group(2)
+            if name and not name.lower().startswith(('quantum', 'fire', 'ice', 'wind', 'lightning', 'physical', 'imaginary')):
+                team.append({"name": name, "icon": icon})
+        if team:
+            break
+    # dedupe
+    seen = set()
+    out = []
+    for t in team:
+        if t["name"] not in seen:
+            seen.add(t["name"])
+            out.append(t)
+    return out[:6]
+
+
 def grab(h, start, ends):
     i = h.find(start)
     if i < 0:
@@ -80,7 +210,7 @@ def parse_build(h):
       Endfield : Best Weapons / Best Gear
       NTE      : Best Arcs / Best Cartridges / Main Stats + Sub Stats
     """
-    out = {"weapon": [], "gear": [], "stats": [], "substats": [], "teams": []}
+    out = {"weapon": [], "gear": [], "stats": [], "substats": [], "teams": [], "skills": [], "image": "", "slug": ""}
 
     def names_in(seg):
         """Nama item: coba set-name, lalu name+rarity."""
@@ -213,11 +343,75 @@ def parse_build(h):
                     if v.strip() and v.strip() != "="]
             out["substats"] = list(dict.fromkeys(vals))[:6]
 
+    # ---------- SKILL ----------
+    out["skills"] = parse_skills(h)
+
+    # ---------- TEAM ----------
+    out["team"] = parse_team(h)
+
+    # ---------- GAMBAR ----------
+    full = re.findall(r'src="(https://cdn\.prydwen\.gg/images/[^"]*_full[^"]*)"', h)
+    card = re.findall(r'src="(https://cdn\.prydwen\.gg/images/[^"]*_card[^"]*)"', h)
+    out["img_full"] = full[0] if full else ""
+    out["img_card"] = card[0] if card else ""
+
     # ---------- RINGKASAN ----------
     md = re.search(r'<meta name="description" content="([^"]+)"', h)
     out["summary"] = html.unescape(md.group(1))[:300] if md else ""
 
     return out
+
+
+def fullimg_html(c):
+    src = c.get("img_local") or c.get("img_full") or c.get("img_card") or ""
+    if not src:
+        return ""
+    return ('    <div class="build-fullimg">\n'
+            '      <img src="%s" alt="%s" loading="lazy">\n'
+            '    </div>' % (esc(src), esc(c.get("name", ""))))
+
+
+def skills_html(c):
+    skills = c.get("skills", [])
+    if not skills:
+        return '<p class="build-empty">Data skill belum tersedia.</p>'
+    rows = []
+    for s in skills:
+        rows.append(
+            '        <div class="build-skill-card">\n'
+            '          <div class="build-skill-head">\n'
+            '            <span class="build-skill-type">%s</span>\n'
+            '            <span class="build-skill-name">%s</span>\n'
+            '          </div>\n'
+            '          <p class="build-skill-desc">%s</p>\n'
+            '        </div>' % (esc(s.get("type", "")), esc(s.get("name", "")), esc(s.get("desc", ""))))
+    return "\n".join(rows)
+
+
+def team_section(c):
+    team = c.get("team", [])
+    if not team:
+        return ""
+    chips = []
+    for m in team:
+        icon = m.get("icon_local") or m.get("icon", "")
+        name = esc(m.get("name", ""))
+        if icon:
+            chips.append(
+                '          <div class="build-team-card">\n'
+                '            <img src="%s" alt="%s" loading="lazy">\n'
+                '            <span>%s</span>\n'
+                '          </div>' % (esc(icon), name, name))
+        else:
+            chips.append(
+                '          <div class="build-team-card">\n'
+                '            <span>%s</span>\n'
+                '          </div>' % name)
+    return ('    <section class="section build-block" id="team">\n'
+            '      <h2 class="section-title">&#128101; Tim yang Direkomendasikan</h2>\n'
+            '      <p class="build-note">Karakter yang sering dipasangkan bersama %s.</p>\n'
+            '      <div class="build-team-grid">\n%s\n      </div>\n'
+            '    </section>' % (esc(c.get("name", "")), "\n".join(chips)))
 
 
 def stat_table(stats):
@@ -234,7 +428,7 @@ def stat_table(stats):
     return '      <div class="build-stats">\n%s\n      </div>' % "\n".join(rows)
 
 
-def rank_list(items, label, kind):
+def rank_list(items, label):
     if not items:
         return ('<p class="build-empty">Data %s belum tersedia untuk karakter ini.</p>'
                 % esc(label.lower()))
@@ -255,20 +449,23 @@ def build_page(slug, game_name, c, source_url):
     labels = GAMES[slug][2]
     meta = " &middot; ".join(x for x in [c.get("element"), c.get("role"),
                                         ("R" + c["rarity"]) if c.get("rarity") else ""] if x)
-    img = c.get("local") or ""
+    img = c.get("img_full") or c.get("img_card") or c.get("local") or ""
     tier_url = "tierlist-%s.html" % slug
     guide_url = "guide-%s.html" % {
         "hsr": "honkai-star-rail", "zzz": "zenless-zone-zero",
         "wuthering": "wuthering-waves", "endfield": "arknights-endfield",
         "nte": "neverness-to-everness"}[slug]
 
+    sh = skills_html(c)
+    ts = team_section(c)
+
     return '''<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build %s &#8212; %s &#8212; Starwise</title>
-  <meta name="description" content="Build %s untuk %s: %s, %s, dan stat utama.">
+  <title>Build %(cname)s &#8212; %(gname)s &#8212; Starwise</title>
+  <meta name="description" content="Build %(cname)s untuk %(gname)s: %(wlabel)s, %(glabel)s, dan stat utama.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -276,7 +473,7 @@ def build_page(slug, game_name, c, source_url):
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">Starwise</a>
-%s
+%(nav)s
       <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     </div>
   </header>
@@ -286,62 +483,73 @@ def build_page(slug, game_name, c, source_url):
     <nav class="breadcrumb" aria-label="Navigasi">
       <a href="games.html">Games</a>
       <span class="crumb-sep">/</span>
-      <a href="%s">Tier List</a>
+      <a href="%(tier)s">Tier List</a>
       <span class="crumb-sep">/</span>
-      <span class="crumb-cur">Build %s</span>
+      <span class="crumb-cur">Build %(cname)s</span>
     </nav>
 
     <header class="build-head">
-      <img class="build-avatar" src="%s" alt="%s" loading="eager" decoding="async">
+      <img class="build-avatar" src="%(img)s" alt="%(cname)s" loading="eager" decoding="async">
       <div>
-        <h1>%s</h1>
-        <p class="build-meta">%s</p>
+        <h1>%(cname)s</h1>
+        <p class="build-meta">%(meta)s</p>
         <div class="build-badges">
-          <span class="tm-badge tm-tier">Tier %s</span>
-          %s
+          <span class="tm-badge tm-tier">Tier %(tier)s</span>
+          %(el)s
         </div>
       </div>
     </header>
 
-    <p class="build-summary">%s</p>
+    <p class="build-summary">%(summary)s</p>
+
+    %(fullimg)s
 
     <nav class="page-nav">
-      <a href="#weapon">%s</a>
-      <a href="#gear">%s</a>
-      <a href="#stats">%s</a>
-      %s
+      <a href="#skill">Skill</a>
+      <a href="#weapon">%(wlabel)s</a>
+      <a href="#gear">%(glabel)s</a>
+      <a href="#stats">%(slabel)s</a>
+      %(teamnav)s
     </nav>
 
+    <section class="section build-block" id="skill">
+      <h2 class="section-title">&#128269; Detail Skill</h2>
+      <p class="build-note">Semua skill aktif dan pasif beserta efeknya.</p>
+      <div class="build-skills">
+%(sh)s
+      </div>
+    </section>
+
     <section class="section build-block" id="weapon">
-      <h2 class="section-title">&#9876; %s Terbaik</h2>
+      <h2 class="section-title">&#9876; %(wlabel)s Terbaik</h2>
       <p class="build-note">Diurutkan dari yang paling kuat. Persentase menunjukkan performa relatif terhadap pilihan terbaik.</p>
-%s
+%(w)s
     </section>
 
     <section class="section build-block" id="gear">
-      <h2 class="section-title">&#128142; %s Terbaik</h2>
+      <h2 class="section-title">&#128142; %(glabel)s Terbaik</h2>
       <p class="build-note">Set terbaik untuk karakter ini, diurutkan berdasarkan prioritas.</p>
-%s
+%(g)s
     </section>
 
     <section class="section build-block" id="stats">
-      <h2 class="section-title">&#128202; %s</h2>
+      <h2 class="section-title">&#128202; %(slabel)s</h2>
       <p class="build-note">Stat yang dicari pada tiap slot.</p>
-%s
+%(st)s
     </section>
 
-    %s
+    %(ts)s
 
     <section class="section">
       <h2 class="section-title">&#128279; Lanjutkan</h2>
       <div class="card-grid">
-        <a href="%s" class="card">
-          <div class="card-body"><h3>Tier List %s</h3><p>Lihat posisi karakter ini dan lainnya.</p></div>
+        <a href="%(tier)s" class="card">
+          <div class="card-body"><h3>Tier List %(gname)s</h3><p>Lihat posisi karakter ini dan lainnya.</p></div>
         </a>
-        <a href="%s" class="card">
-          <div class="card-body"><h3>Panduan %s</h3><p>Pity, rotasi tim, dan tips farming.</p></div>
+        <a href="%(guide)s" class="card">
+          <div class="card-body"><h3>Panduan %(gname)s</h3><p>Pity, rotasi tim, dan tips farming.</p></div>
         </a>
-        <a href="%s" class="card" target="_blank" rel="noopener">
+        <a href="%(src)s" class="card" target="_blank" rel="noopener">
           <div class="card-body"><h3>Halaman asli Prydwen</h3><p>Kalkulasi lengkap dan penjelasan detail.</p></div>
         </a>
       </div>
@@ -364,27 +572,21 @@ def build_page(slug, game_name, c, source_url):
   <script src="js/main.js"></script>
 </body>
 </html>
-''' % (
-        esc(c["name"]), esc(game_name), esc(c["name"]), esc(game_name),
-        esc(labels["weapon"]), esc(labels["gear"]), NAV, esc(tier_url), esc(c["name"]),
-        esc(img), esc(c["name"]), esc(c["name"]), meta, esc(c.get("tier", "-")),
-        ('<span class="tm-badge tm-el">%s</span>' % esc(c["element"])) if c.get("element") else "",
-        esc(c.get("summary", "")),
-        esc(labels["weapon"]), esc(labels["gear"]), esc(labels["stats"]),
-        '<a href="#teams">Tim</a>' if c.get("teams") else "",
-        esc(labels["weapon"]), rank_list(c.get("weapon"), labels["weapon"], "weapon"),
-        esc(labels["gear"]), rank_list(c.get("gear"), labels["gear"], "gear"),
-        esc(labels["stats"]), stat_table(c.get("stats")),
-        ('''    <section class="section build-block" id="teams">
-      <h2 class="section-title">&#128101; Tim yang Direkomendasikan</h2>
-      <p class="build-note">Karakter yang sering dipasangkan bersama.</p>
-      <div class="build-teams">
-%s
-      </div>
-    </section>''' % "\n".join(
-            '        <span class="build-team-chip">%s</span>' % esc(t)
-            for t in c.get("teams", []))) if c.get("teams") else "",
-        esc(tier_url), esc(game_name), esc(guide_url), esc(game_name), esc(source_url))
+''' % {
+        "cname": esc(c["name"]), "gname": esc(game_name),
+        "wlabel": esc(labels["weapon"]), "glabel": esc(labels["gear"]),
+        "slabel": esc(labels["stats"]),
+        "nav": NAV, "tier": esc(tier_url), "guide": esc(guide_url),
+        "img": esc(c.get("img_local") or img),
+        "fullimg": fullimg_html(c), "meta": meta, "tier": esc(c.get("tier", "-")),
+        "el": ('<span class="tm-badge tm-el">%s</span>' % esc(c["element"])) if c.get("element") else "",
+        "summary": esc(c.get("summary", "")),
+        "teamnav": '<a href="#team">Tim</a>' if c.get("team") else "",
+        "w": rank_list(c.get("weapon"), labels["weapon"]),
+        "g": rank_list(c.get("gear"), labels["gear"]),
+        "st": stat_table(c.get("stats")),
+        "sh": sh, "ts": ts, "src": esc(source_url),
+    }
 
 
 # urutan tier dari terbaik ke terburuk, untuk memilih satu tier saat
@@ -420,7 +622,34 @@ def load_chars(slug):
     return list(best.values())
 
 
+def update_tier_data_with_skills():
+    """Parse skill dari Prydwen, save skills to _tier_data.json.
+
+    Each character gets:
+      c["skills"] = [{"name": ..., "type": ..., "desc": ...}, ...]
+    """
+    d = BASE / "_tier_data.json"
+    if not d.exists():
+        print("No _tier_data.json found — skipping skill update")
+        return
+    data = json.loads(d.read_text(encoding="utf-8"))
+    for slug in GAMES:
+        path = GAMES[slug][1]
+        for t in data.get(slug, []):
+            for c in t["chars"]:
+                url = f"https://www.prydwen.gg/{path}/characters/{c['slug']}"
+                h = ""
+                try:
+                    h = fetch(url)
+                except Exception:
+                    pass
+                c["skills"] = parse_skills(h)
+    d.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Updated _tier_data.json with skill data for {len(GAMES)} games")
+
+
 def main():
+    update_tier_data_with_skills()
     only = sys.argv[1] if len(sys.argv) > 1 else None
     IMG_DIR.mkdir(parents=True, exist_ok=True)
     total = 0
@@ -451,8 +680,20 @@ def main():
             except Exception as exc:
                 print("   %-22s gagal: %s" % (cs, exc))
                 continue
-            out = BASE / ("build-%s-%s.html" % (slug, cs))
-            out.write_text(build_page(slug, game_name, c, url), encoding="utf-8")
+            slug_file = cs.replace("/", "-")
+            # download gambar full body
+            img_url = c.get("img_full") or c.get("img_card") or ""
+            if img_url:
+                dest = IMG_DIR / slug / ("%s_full.webp" % cs)
+                if download_image(img_url, dest):
+                    c["img_local"] = "img/build/%s/%s_full.webp" % (slug, cs)
+            # download ikon anggota tim
+            for idx, m in enumerate(c.get("team", [])):
+                ic = m.get("icon", "")
+                if ic:
+                    d2 = IMG_DIR / slug / ("team_%s_%d.webp" % (cs, idx))
+                    if download_image(ic, d2):
+                        m["icon_local"] = "img/build/%s/team_%s_%d.webp" % (slug, cs, idx)
             ok += 1
             time.sleep(0.35)
         print("%-10s %d/%d build dibuat" % (slug, ok, len(chars)))
