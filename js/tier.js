@@ -80,15 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
       'Tier dan atribut dirangkum dari sumber pihak ketiga (Prydwen Institute / Game8). ' +
       'Peringkat bisa berubah setelah patch baru.';
 
-    // tombol aksi
+    // tombol aksi: halaman build lokal + sumber Prydwen
     const actions = [];
-    if (slug) {
-      const gameSlug = item.dataset.game || '';
-      if (gameSlug) {
-        actions.push('<a class="btn btn-primary" target="_blank" rel="noopener" href="' +
-          'https://www.prydwen.gg/' + gameSlug + '/characters/' + slug +
-          '">Build lengkap di Prydwen</a>');
-      }
+    const gameSlug = item.dataset.game || '';
+    const gameKey = item.dataset.gamekey || '';
+    if (gameKey && slug) {
+      actions.push('<a class="btn btn-primary" href="build-' + gameKey + '-' + slug +
+        '">Lihat build lengkap</a>');
+    }
+    if (gameSlug && slug) {
+      actions.push('<a class="btn btn-secondary" target="_blank" rel="noopener" href="' +
+        'https://www.prydwen.gg/' + gameSlug + '/characters/' + slug +
+        '">Sumber Prydwen</a>');
     }
     actions.push('<button type="button" class="btn btn-secondary tier-modal-dismiss">Tutup</button>');
     elActions.innerHTML = actions.join('');

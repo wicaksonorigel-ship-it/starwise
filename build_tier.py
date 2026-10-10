@@ -204,13 +204,13 @@ def char_html(c, slug):
     return (
         '        <button type="button" class="tc-item"'
         ' data-name="%s" data-tier="%s" data-el="%s" data-role="%s"'
-        ' data-rarity="%s" data-img="%s" data-slug="%s" data-game="%s">\n'
+        ' data-rarity="%s" data-img="%s" data-slug="%s" data-game="%s" data-gamekey="%s">\n'
         '          <img src="%s" alt="%s" loading="lazy" decoding="async">\n'
         '          <span class="tc-name">%s</span>\n'
         '        </button>' % (
             esc(c["name"]), esc(c.get("tier", "")), esc(c.get("element", "")),
             esc(c.get("role", "")), esc(c.get("rarity", "")), esc(src),
-            esc(c["slug"]), esc(GAME_SLUG.get(slug, "")), esc(src),
+            esc(c["slug"]), esc(GAME_SLUG.get(slug, "")), esc(slug), esc(src),
             esc(c["name"]), esc(c["name"])))
 
 
