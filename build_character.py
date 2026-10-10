@@ -387,13 +387,37 @@ def build_page(slug, game_name, c, source_url):
         esc(tier_url), esc(game_name), esc(guide_url), esc(game_name), esc(source_url))
 
 
+# urutan tier dari terbaik ke terburuk, untuk memilih satu tier saat
+# sebuah karakter muncul di lebih dari satu tier.
+TIER_ORDER = ["T0", "SS", "T05", "T0.5", "S", "T1", "T15", "T1.5", "A",
+              "T2", "B", "T3", "C", "T4", "D", "T5", "0", "05", "1", "15", "2", "3", "4", "5"]
+
+
+def tier_rank(t):
+    try:
+        return TIER_ORDER.index(t)
+    except ValueError:
+        return 999
+
+
 def load_chars(slug):
+    """Ambil karakter unik. Kalau satu karakter muncul di beberapa tier
+    (mis. Anaxa di T1 dan T1.5), pakai tier terbaiknya supaya konsisten."""
     f = BASE / "_tier_data.json"
     if not f.exists():
         return []
     data = json.loads(f.read_text(encoding="utf-8"))
     tiers = data.get(slug, [])
-    return [c for t in tiers for c in t["chars"]]
+    best = {}
+    for t in tiers:
+        for c in t["chars"]:
+            key = c.get("slug") or c["name"]
+            cur = best.get(key)
+            if cur is None or tier_rank(t["tier"]) < tier_rank(cur.get("tier", "Z")):
+                cc = dict(c)
+                cc["tier"] = t["tier"]
+                best[key] = cc
+    return list(best.values())
 
 
 def main():
@@ -412,6 +436,11 @@ def main():
         ok = 0
         for c in chars:
             cs = c.get("slug")
+            if not cs:
+                # fallback: generate slug dari nama (dipakai untuk game yang
+                # tidak punya slug di data tier list, mis. Genshin)
+                nm = c.get("name", "")
+                cs = re.sub(r"[^a-z0-9]+", "-", nm.lower()).strip("-")
             if not cs:
                 continue
             url = "https://www.prydwen.gg/%s/characters/%s" % (path, cs)
