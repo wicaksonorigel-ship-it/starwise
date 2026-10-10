@@ -163,6 +163,7 @@ HEAD = """<!DOCTYPE html>
     </div>
   </footer>
 
+  <script src="js/tier.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
