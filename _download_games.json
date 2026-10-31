@@ -1,0 +1,69 @@
+[
+  {
+    "slug": "wuthering",
+    "name": "Kuro Games",
+    "dev": "Wuthering Waves",
+    "icon": "img/logo-ww.jpg",
+    "videoId": "WutheringWaves",
+    "links": [
+      {"label": "Situs resmi Kuro Games", "url": "https://wutheringwaves.kurogames.com/en/"},
+      {"label": "Steam Workshop", "url": "https://steamcommunity.com/workshop/filedetails/?id=3467360035"}
+    ]
+  },
+  {
+    "slug": "genshin",
+    "name": "HoYoverse",
+    "dev": "Genshin Impact",
+    "icon": "img/logo-gi.jpg",
+    "videoId": "GenshinImpact",
+    "links": [
+      {"label": "Wallpapers v3.x (HoYoLab)", "url": "https://hoyo.global/download-official-wallpapers/version-3/"},
+      {"label": "Wallpapers v1.x (HoYoLab)", "url": "https://hoyo.global/download-official-wallpapers/version-1/"},
+      {"label": "HoYoLab creator collection", "url": "https://www.hoyolab.com/creatorCollection/644811"}
+    ]
+  },
+  {
+    "slug": "hsr",
+    "name": "HoYoverse",
+    "dev": "Honkai: Star Rail",
+    "icon": "img/logo-hsr.jpg",
+    "videoId": "HonkaiStarRail",
+    "links": [
+      {"label": "Situs resmi HSR", "url": "https://hsr.hoyoverse.com/en-us/home"},
+      {"label": "HoYoLab", "url": "https://www.hoyolab.com/"}
+    ]
+  },
+  {
+    "slug": "zzz",
+    "name": "HoYoverse",
+    "dev": "Zenless Zone Zero",
+    "icon": "img/logo-zzz.jpg",
+    "videoId": "ZZZ_Official",
+    "links": [
+      {"label": "Situs resmi ZZZ", "url": "https://zenless.hoyoverse.com/en-us/main"},
+      {"label": "HoYoLab", "url": "https://www.hoyolab.com/"}
+    ]
+  },
+  {
+    "slug": "endfield",
+    "name": "Gryphline",
+    "dev": "Arknights: Endfield",
+    "icon": "img/logo-endfield.jpg",
+    "videoId": "arknightsendfieldEN",
+    "links": [
+      {"label": "Situs resmi Gryphline", "url": "https://endfield.gryphline.com/id-id"},
+      {"label": "YouTube official", "url": "https://www.youtube.com/@arknightsendfieldEN"}
+    ]
+  },
+  {
+    "slug": "nte",
+    "name": "Perfect World Games",
+    "dev": "Neverness to Everness",
+    "icon": "img/logo-nte.jpg",
+    "videoId": "NTE_Official",
+    "links": [
+      {"label": "Situs resmi NTE", "url": "https://nte.perfectworld.com/intermed/mktkol/en/index.html"},
+      {"label": "YouTube official", "url": "https://www.youtube.com/@NTE_Official"}
+    ]
+  }
+]
