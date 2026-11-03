@@ -90,7 +90,7 @@ NAV = '''      <nav class="main-nav">
         <a href="download.html">Download</a>
       </nav>'''
 
-ALLOWED = set("—–’‘“”…°×→§✓∞")
+ALLOWED = set("—–’‘“”…°×→§✓∞✨")
 
 
 def guard(text, where):
