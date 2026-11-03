@@ -10,6 +10,9 @@ Jalankan: python build_anime.py
 import json
 import pathlib
 import re
+import ssl
+import time
+import urllib.request
 
 BASE = pathlib.Path(__file__).parent
 ANIME = json.loads((BASE / "_anime_img.json").read_text(encoding="utf-8"))
@@ -206,6 +209,92 @@ def trailer_block():
     return "\n".join(items)
 
 
+def build_video_categories():
+    """Halaman video kategori. 6 game, masing-masing 3 video."""
+    yt = json.loads((BASE / "_yt_video_ids.json").read_text(encoding="utf-8"))
+    embed = json.loads((BASE / "_embed_status.json").read_text(encoding="utf-8"))
+    ctx = ssl.create_default_context()
+    UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120"}
+
+    def get_title(vid):
+        try:
+            req = urllib.request.Request(
+                f"https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={vid}&format=json",
+                headers=UA
+            )
+            with urllib.request.urlopen(req, timeout=8, context=ctx) as r:
+                data = json.loads(r.read().decode())
+                return data.get("title", "Video").replace("&amp;", "&").replace("&#39;", "'")
+        except:
+            return "Video"
+
+    out = []
+    for cat, vids in yt.items():
+        videos = vids[:3]
+        if not videos:
+            continue
+        game_name = cat.replace("_", " ").title()
+        cards = []
+        for v in videos:
+            if not v:
+                continue
+            embeddable = embed.get(v, False)
+            title = get_title(v)[:80].replace('"', "'")
+            if embeddable:
+                cards.append(f'''
+        <div class="video-card">
+          <div class="video-thumb">
+            <iframe src="https://www.youtube.com/embed/{v}" 
+                    title="{title}" 
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    style="position:absolute; inset:0; width:100%; height:100%; border:none;">
+            </iframe>
+            <span class="play-overlay"><span class="play-icon">&#9654;</span></span>
+          </div>
+          <div class="video-body">
+            <h3>{title}</h3>
+            <p class="video-play">
+              <a href="https://www.youtube.com/watch?v={v}" target="_blank" rel="noopener">
+                &#127916; Tonton di YouTube
+              </a>
+            </p>
+          </div>
+        </div>''')
+            else:
+                cards.append(f'''
+        <div class="video-card">
+          <div class="video-thumb">
+            <a href="https://www.youtube.com/watch?v={v}" target="_blank" rel="noopener">
+              <span class="thumb-placeholder">&#127916;</span>
+            </a>
+          </div>
+          <div class="video-body">
+            <h3>{title}</h3>
+            <p class="video-play">
+              <a href="https://www.youtube.com/watch?v={v}" target="_blank" rel="noopener">
+                &#127916; Buka di YouTube
+              </a>
+            </p>
+          </div>
+        </div>''')
+        cards_html = "\n".join(cards)
+        section = f'''
+    <section class="section" id="video-category-{cat}">
+      <h2 class="section-title">&#127916; {game_name}</h2>
+      <p class="section-intro">
+        Video dari developer resmi untuk {game_name}. 3 video pertama yang diambil 
+        dari channel resmi developer. Buka di tab YouTube untuk tonton.
+      </p>
+      <div class="video-grid">
+{cards_html}
+      </div>
+    </section>'''
+        out.append(section)
+    return "\n".join(out)
+
+
 def build():
     sections = []
     for key in ORDER:
@@ -321,6 +410,17 @@ def build():
     </section>
 
     <section class="section">
+      <h2 class="section-title">&#127916; Video Kategori</h2>
+      <p class="section-intro">
+        Video dari developer resmi untuk setiap game. 3 video pertama yang diambil
+        dari channel resmi developer. Buka di tab YouTube untuk tonton.
+      </p>
+      <div class="video-grid">
+{video_categories}
+      </div>
+    </section>
+
+    <section class="section">
       <h2 class="section-title">&#128161; Platform Legal</h2>
       <p class="section-intro">Tonton anime lewat layanan berbayar berikut. Hindari situs streaming ilegal.</p>
       <div class="card-grid">
@@ -367,6 +467,7 @@ def build():
         playlist_cards=playlist_cards(),
         trailers=trailer_block(),
         platforms=platforms,
+        video_categories=build_video_categories(),
     )
 
     guard(html, "anime.html")
