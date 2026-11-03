@@ -2836,3 +2836,31 @@ a.build-team-card span {
     grid-column: 2;
   }
 }
+
+/* Streaming */
+.stream-category {
+    margin-bottom: 32px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+}
+.stream-category-title {
+    font-size: 1rem;
+    color: var(--fg);
+    padding: 14px 16px;
+    background: var(--accent);
+    color: var(--fg);
+    margin: 0;
+}
+.stream-category .video-grid {
+    padding: 0 16px 16px;
+}
+.ic {
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    font-size: 0.9em;
+    margin-right: 8px;
+    vertical-align: middle;
+}
